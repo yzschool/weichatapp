@@ -1,0 +1,59 @@
+/* query.wxss */
+.textAll{
+  padding-left: 50rpx;
+  color: black;
+  float: left;
+  text-align: left;
+  width: 160rpx;
+}
+.text{
+  padding-left: 50rpx;
+  color: black;
+  text-align: left;
+  width: 80%;
+  margin: auto;
+}
+.view1{
+  background-color: white;
+  width: 100%;
+  height: 70rpx;
+  line-height:70rpx;
+  font-size: 32rpx;
+}
+.view2{
+  background-color: #dddddd;
+  width: 80%;
+  margin: auto;
+  height: 80rpx;
+  line-height:80rpx;
+  font-size: 32rpx;
+}
+.className{
+  float: left;
+  border: 1px solid black;
+  border-radius: 3rpx;
+  margin-top: 10rpx;
+  height: 50rpx;
+  text-align: left;
+  padding-left: 10rpx;
+  width: 60%;
+
+}
+.okView{
+  width:50%;
+  float: left;
+  height: 100rpx;
+  background-color: white;
+  margin-top: 70rpx;
+}
+.okBtn{
+  top: 15rpx;
+  width: 200rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  font-size: 32rpx;
+  color: white;
+  text-align: center;
+  background-color: pink;
+
+}

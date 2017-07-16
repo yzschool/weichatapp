@@ -1,0 +1,4 @@
+<!--memberList.wxml-->
+<view wx:for="{{items}}" class="viewList" bindtap="messageShow">
+    <label>{{index+1}}: {{item.message}}</label>
+</view>

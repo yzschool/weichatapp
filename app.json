@@ -1,0 +1,44 @@
+{
+  "pages": [
+    "pages/class/submit",
+    "pages/class/query",
+    "pages/logs/logs",
+    "pages/index/index",
+    "pages/class/submitRst",
+    "pages/class/queryRst",
+    "pages/class/enroll",
+    "pages/class/memberList"
+  ],
+  "window": {
+    "navigationBarTitleText": "元卓课堂"
+  },
+  "tabBar": {
+    "color":"#dddddd",
+    "selectedColor":"#3cc51f",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "元卓课堂",
+        "iconPath":"image/1-grey.png",
+        "selectedIconPath":"image/1.png"
+      },
+      {
+        "pagePath": "pages/class/submit",
+        "text": "我要拼班",
+        "iconPath": "image/2-grey.png",
+        "selectedIconPath": "image/2.png"
+      },
+      {
+        "pagePath": "pages/class/query",
+        "text": "查询拼班",
+        "iconPath": "image/3-grey.png",
+        "selectedIconPath": "image/3.png"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "debug": true
+}

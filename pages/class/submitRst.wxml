@@ -1,0 +1,2 @@
+<!--submitRst.wxml-->
+<text>提交结果 {{result}}</text>

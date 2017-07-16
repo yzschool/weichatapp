@@ -1,0 +1,42 @@
+<!--index.wxml-->
+<view class="container">
+
+  <view class="head">课程信息</view>
+  <view class="views">
+    <button class="list" bindtap="memberBtn">已加入人员</button>
+    <button class="submits" bindtap="enrollBtn">点击报名</button>
+  </view>
+  <view class="view1">
+    <view class="textAll">课程名称:</view>
+    <view class="className">{{className}}</view>
+  </view>
+
+  <view class="view1">
+    <view class="textAll">开始时间:</view>
+    <view class="className">{{startTime}}</view>
+  </view>
+
+  <view class="view1">
+    <view class="textAll">结束时间:</view>
+    <view class="className">{{endTime}}</view>
+  </view>
+
+
+  <view class="view1">
+    <view class="textAll">年级:</view>
+    <view class="className">{{grade}}</view>
+  </view>
+
+  <view class="view1">
+    <view class="textAll">上课区域:</view>
+    <view class="className">{{district}}</view>
+  </view>
+
+  
+
+
+
+
+
+
+</view>

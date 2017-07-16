@@ -1,0 +1,11 @@
+/* memberList.wxss */
+
+.viewList{
+   width: 100%;
+   height: 80rpx;
+   padding-left: 48rpx;
+   font-size: 34rpx;
+   background-color: white;
+   line-height: 80rpx;
+   border-bottom: 1px solid lightgoldenrodyellow;
+}
