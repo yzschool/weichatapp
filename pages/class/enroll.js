@@ -6,9 +6,7 @@ Page({
     console.log('form发生了submit事件，携带数据为：', e.detail.value);
 
     wx.request({
-      //url: 'http://www.yzschool.com.cn:8080/class', //仅为示例，并非真实的接口地址
-      url: 'http://www.yzschool.com.cn/weichat/class',
-      //url: 'http://192.168.227.128:8080/class', //仅为示例，并非真实的接口地址
+      url: 'https://www.yzschool.com.cn/weichat/class',
       method: 'POST',
       data: {
         "name": "yz english AA",

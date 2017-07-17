@@ -1,7 +1,7 @@
 <form bindsubmit="formSubmit" bindreset="formReset">
   <view class="view1" style="margin-top:50rpx;">
     <view class="textAll">课程名称：</view>
-    <input name="className" class="className" maxlength="20" type="text" bindinput="bindClassName" auto-focus />
+    <input name="className" class="className" maxlength="20" type="text" auto-focus />
   </view>
   <scroll-view scroll-y="true"  hidden="{{hide}}"  style="height:150px;width:100%;margin-top:30rpx;">
     <view class="view2" wx:for="{{item}}">

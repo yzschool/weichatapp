@@ -1,12 +1,12 @@
 // query.js
 Page({
-  /*formSubmit: function (e) {
+  formSubmit: function (e) {
     console.log('form发生了submit事件，携带数据为：', e.detail.value);
     wx.navigateTo({
       url: 'queryRst?className=成功'
     })
 
-  },*/
+  },
 
   
   formReset: function () {
