@@ -27,7 +27,9 @@ Page({
     var that = this;
 
     wx.request({
+      //url: 'http://www.yzschool.com.cn:8080/class',
       url: 'https://www.yzschool.com.cn/weichat/class',
+      //url: 'http://192.168.227.128:8080/class',
       method: 'GET',
       data: {
       },

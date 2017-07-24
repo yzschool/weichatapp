@@ -6,26 +6,24 @@ Page({
     console.log('form发生了submit事件，携带数据为：', e.detail.value);
 
     wx.request({
+      //url: 'http://www.yzschool.com.cn:8080/class', //仅为示例，并非真实的接口地址
       url: 'https://www.yzschool.com.cn/weichat/class',
+      //url: 'http://192.168.227.128:8080/class', //仅为示例，并非真实的接口地址
       method: 'POST',
       data: {
-        "classname": "yz english AA",
-        "starttime": "2017-07-11",
-        "endtime": "2017-09-11",
-        "peroid": "每周三晚上",
-        "classtime": "19:30-20:30",
-        "level": "中等",
+        "name": "yz english AA",
+        "classStartTime": "2017-07-11",
+        "classEndTime": "2017-09-11",
+        "classPeroid": "每周三晚上",
+        "classTime": "19:30-20:30",
+        "classLevel": "中等",
         "city": "深圳",
         "district": "福田",
         "building": "香蜜湖小区",
         "latitude": 114.026694,
         "longitude": 22.549416,
-        "creater": "xiao lee",
-        "openid": "adsf2324sdfa",
-        "tel": "13900000000",
-        "creattime": "2017-07-01",
-        "grade": "三年纪",
-        "teachertel": "13900000999",
+        "createdBy": "xiao lee",
+        "contactTel": "13900000000",
       },
       header: {
         'content-type': 'application/json'
