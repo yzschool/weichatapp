@@ -1,21 +1,16 @@
 <form bindsubmit="formSubmit" bindreset="formReset">
   <view class="view1" style="margin-top:50rpx;">
     <view class="textAll">课程名称：</view>
-    <input name="className" class="className" maxlength="20" type="text" bindinput="bindClassName" auto-focus />
+    <input name="className" bindchange="bindClssname"  class="className" maxlength="20" type="text" auto-focus />
   </view>
-  <scroll-view scroll-y="true" style="height:150px;width:100%;margin-top:30rpx;">
-    <view class="view2" wx:for="{{item}}">
-      <view class="text">{{item.name}}</view>
-      
-    </view>
-  </scroll-view>
+
 
   <view class="okView">
     <button formType="reset" type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" hover-class="other-button-hover" class="okBtn">重置</button>
 
   </view>
   <view class="okView">
-    <button formType="submit" type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}"  hover-class="other-button-hover" class="okBtn">查询</button>
+    <button formType="submit" type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}"  hover-class="other-button-hover" bindtap="clicked" class="okBtn">查询</button>
 
   </view>
 </form>

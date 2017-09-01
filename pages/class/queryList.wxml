@@ -1,0 +1,5 @@
+<!--queryList.wxml-->
+<view class="view1" wx:for="{{item}}" wx:for-index='key'  >
+      <view class="text" bindtap="clickedItem" id="{{key}}">{{item.classname}}-{{item.grade}}-{{item.district}}-{{item.building}}</view>
+      
+    </view>

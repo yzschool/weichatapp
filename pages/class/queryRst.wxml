@@ -12,13 +12,30 @@
   </view>
 
   <view class="view1">
+    <view class="textAll">创建人:</view>
+    <view class="className">{{creater}}</view>
+  </view>
+
+  <view class="view1">
     <view class="textAll">开始时间:</view>
     <view class="className">{{startTime}}</view>
   </view>
 
-  <view class="view1">
+
+   <view class="view1">
     <view class="textAll">结束时间:</view>
     <view class="className">{{endTime}}</view>
+  </view>
+
+
+  <view class="view1">
+    <view class="textAll">星期:</view>
+    <view class="className">{{peroid}}</view>
+  </view>
+
+  <view class="view1">
+    <view class="textAll">上课时间:</view>
+    <view class="className">{{classtime}}</view>
   </view>
 
 
@@ -29,7 +46,12 @@
 
   <view class="view1">
     <view class="textAll">上课区域:</view>
-    <view class="className">{{district}}</view>
+    <view class="className">{{city}}-{{district}}</view>
+  </view>
+
+  <view class="view1">
+    <view class="textAll">上课地点:</view>
+    <view class="className">{{building}}</view>
   </view>
 
   

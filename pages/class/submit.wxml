@@ -2,12 +2,12 @@
 
   <view class="view1" style="margin-top:50rpx;">
     <view class="textAll">课程名称:</view>
-    <input name="className" class="className" maxlength="20" type="text" bindinput="bindClassName" auto-focus />
+    <input name="className" class="className" maxlength="20" type="text"  bindinput="bindChange"  auto-focus />
   </view>
 
   <view class="view1">
     <view class="textAll">姓名：</view>
-    <input name="createdBy" class="className" maxlength="20" type="text" bindinput="bindCreatedBy" />
+    <input name="createdBy" class="className" maxlength="20" type="text" bindchange="bindCreatedBy" />
   </view>
 
   <view class="view1">
@@ -22,7 +22,7 @@
 
   <view class="view1">
     <text class="textAll">年级：</text>
-    <input class="className" />
+    <input class="className" bindchange="bindGrade" />
   </view>
 
 
@@ -50,7 +50,7 @@
   </view>
   <view class="view1">
     <text class="textAll">星期：</text>
-    <input class="className" />
+    <input name="week"  class="className" bindchange="bindWeek"/>
   </view>
 
   <view class="view1">
@@ -64,28 +64,28 @@
 
   <view class="view1">
     <view class="textAll">课程难度:</view>
-    <input name="classLevel" class="className" maxlength="20" type="text" bindinput="bindClassLevel" />
+    <input name="classLevel" class="className" maxlength="20" type="text" bindchange="bindClassLevel" />
   </view>
 
   <view class="view1">
     <view class="textAll">上课区域:</view>
-    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+    <picker name="selector" bindchange="bindPickerChange" value="{{index}}" range="{{array_name}}">
       <view class="picker">
-        深圳市-{{array[index]}}
+        深圳市-{{array_name[index]}}
       </view>
     </picker>
   </view>
 
   <view class="view1">
     <view class="textAll">上课地点:</view>
-    <input name="building" class="className" maxlength="20" type="text" bindinput="bindBuilding" />
+    <input name="building" class="className" maxlength="20" type="text" bindchange="bindBuilding" />
   </view>
 
 
 
   <view class="view1">
     <view class="textAll">联系电话:</view>
-    <input name="contactTel" class="className" maxlength="20" type="text" bindinput="bindContactTel" />
+    <input name="contactTel" class="className" maxlength="20" type="number" bindchange="bindContactTel" />
 
   </view>
 
@@ -100,7 +100,7 @@
 
     </view>
     <view class="okView">
-      <button formType="submit" type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" bindtap="createAction" hover-class="other-button-hover" class="okBtn">创建</button>
+      <button formType="submit" type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" hover-class="other-button-hover" class="okBtn">创建</button>
 
     </view>
 

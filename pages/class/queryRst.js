@@ -1,14 +1,18 @@
 // queryRst.js
+var classname;
+var classid;
 Page({
   enrollBtn: function () {
+    //console.log("className is ",classname);
     wx.navigateTo({
-      url: '../class/enroll',
+      url: '../class/enroll?classname=' + classname + '&classid=' + classid,
     })
 
   },
   memberBtn:function(){
     wx.navigateTo({
-      url:'../class/memberList',
+     // url:'../class/memberList?classname='+classname+'&classid='+classid
+      url: '../class/memberList?classid=' + classid 
     })
   },
   
@@ -25,28 +29,31 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-
+    console.log("打印id,s",options.id);
     wx.request({
-      //url: 'http://www.yzschool.com.cn:8080/class',
-      url: 'https://www.yzschool.com.cn/weichat/class',
-      //url: 'http://192.168.227.128:8080/class',
+      url: 'https://www.yzschool.com.cn/weichat/class/'+options.id,
       method: 'GET',
       data: {
       },
-      //header: { 'content-type': 'application/json' },
       success: function (res) {
         console.log('this is get request result')
         var jsonStr = JSON.stringify(res.data);
         var jsonPar = JSON.parse(jsonStr);
         console.log(jsonStr);
+        classname = jsonPar.classname;
+        classid = jsonPar.classid;
         
         that.setData({ 
           info: jsonStr,
-          className: jsonPar.name,
-          grade: jsonPar.name,
-          startTime: jsonPar.classStartTime,
-          endTime: jsonPar.classEndTime,
+          className: jsonPar.classname,
+          creater: jsonPar.creater,
+          classtime: jsonPar.classtime,
+          peroid: jsonPar.peroid,
+          grade: jsonPar.grade,
+          startTime: jsonPar.starttime,
+          endTime: jsonPar.endtime,
           district: jsonPar.district,
+          building: jsonPar.building,
           city: jsonPar.city});
 
       },

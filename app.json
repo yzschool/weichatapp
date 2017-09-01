@@ -7,20 +7,23 @@
     "pages/class/submitRst",
     "pages/class/queryRst",
     "pages/class/enroll",
-    "pages/class/memberList"
+    "pages/class/memberList",
+    "pages/class/queryList",
+    "pages/class/memberInfo",
+    "pages/class/subPage"
   ],
   "window": {
     "navigationBarTitleText": "元卓课堂"
   },
   "tabBar": {
-    "color":"#dddddd",
-    "selectedColor":"#3cc51f",
+    "color": "#dddddd",
+    "selectedColor": "#3cc51f",
     "list": [
       {
         "pagePath": "pages/index/index",
         "text": "元卓课堂",
-        "iconPath":"image/1-grey.png",
-        "selectedIconPath":"image/1.png"
+        "iconPath": "image/1-grey.png",
+        "selectedIconPath": "image/1.png"
       },
       {
         "pagePath": "pages/class/submit",

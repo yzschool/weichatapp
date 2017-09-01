@@ -1,156 +1,212 @@
 // enroll.js
-// submit.js
 //var classStartTime;
+var classid;
+var name="";
+var city;
+var district;
+var building;
+var grade;
+var usertype = "男";
+var index;
+var capibility;
+var phone="";
+var school;
+var email;
+//console.log("打印11111", index);
 Page({
   formSubmit: function (e) {
-    console.log('form发生了submit事件，携带数据为：', e.detail.value);
+    //console.log('form发生了submit事件，携带数据为：', e.detail.value);
+    //console.log('form发生了submit事件，55555携带数据为：', classid);
+    var result = this.data.array_name[e.detail.value.selector];
+    this.setData({ result: result });
+   // console.log('form发生了submit事件，55555携带数据为：', result);
+    if (name&&phone) {
+      wx.request({
+        url: 'https://www.yzschool.com.cn/weichat/class/' + classid,
+        method: 'PUT',
+        data: {
+          "name": name,
+          "phone": phone,
+          "email": email,
+          "school": school,
+          "grade": grade,
+          "capibility": capibility,
+          "usertype": usertype,
+          "city": "深圳",
+          "district": result,
+          "building": building,
+        },
+        header: {
+          'content-type': 'application/json'
+        },
+        success: function (res) {
+         // console.log(res.data)
+         // console.log('this is get request result', res.statusCode);
+          if (res.statusCode==201){
+            wx.showToast({
+              title: '报名成功',
+              icon: 'success',
+              duration: 2000
+            })
+            wx.navigateBack();
+          } else if (res.statusCode == 208){
+            wx.showToast({
+              title: '您已报名该课程，请勿重复',
+              duration: 5000
+            })
+          }else{
+            wx.showToast({
+              title: '报名失败，请检查网络',
+              duration: 5000
+            })
+          }
+         
+          
+          
+        },
+        fail: function (res) {
+          /* wx.navigateTo({
+             url: 'submitRst?result=失败'
+           })*/
+          wx.showToast({
+            title: '报名失败',
+            image: "../../image/fail.png",
+            duration: 4000
+          })
+        }
+      })
+     // console.log('name22232', name);
 
-    wx.request({
-      //url: 'http://www.yzschool.com.cn:8080/class', //仅为示例，并非真实的接口地址
-      url: 'https://www.yzschool.com.cn/weichat/class',
-      //url: 'http://192.168.227.128:8080/class', //仅为示例，并非真实的接口地址
-      method: 'POST',
-      data: {
-        "name": "yz english AA",
-        "classStartTime": "2017-07-11",
-        "classEndTime": "2017-09-11",
-        "classPeroid": "每周三晚上",
-        "classTime": "19:30-20:30",
-        "classLevel": "中等",
-        "city": "深圳",
-        "district": "福田",
-        "building": "香蜜湖小区",
-        "latitude": 114.026694,
-        "longitude": 22.549416,
-        "createdBy": "xiao lee",
-        "contactTel": "13900000000",
-      },
-      header: {
-        'content-type': 'application/json'
-      },
-      success: function (res) {
-        console.log(res.data)
-        wx.navigateTo({
-          url: 'submitRst?result=成功'
-        })
-      },
-      fail: function (res) {
-        wx.navigateTo({
-          url: 'submitRst?result=失败'
-        })
-      }
-    })
-
+    }else if(phone){
+      wx.showToast({
+        title: '未填写姓名',
+        image: "../../image/fail.png",
+        duration: 4000
+      })
+     // console.log('name2222', name);
+    }else{
+      wx.showToast({
+        title: '未填写电话',
+        image: "../../image/fail.png",
+        duration: 4000
+      })
+     // console.log('name2222', name);
+    }
+   
   },
   formReset: function () {
-    console.log('form发生了reset事件')
+   // console.log('form发生了reset事件')
   },
 
   /**
    * 页面的初始数据
    */
   data: {
-    array: ['福田', '南山', '罗湖', '宝安', '盐田', '龙岗', '龙华', '光明'],
-    objectArray: [
-      {
-        id: 0,
-        name: '福田'
-      },
-      {
-        id: 1,
-        name: '南山'
-      },
-      {
-        id: 2,
-        name: '罗湖'
-      },
-      {
-        id: 3,
-        name: '宝安'
-      },
-      {
-        id: 4,
-        name: '盐田'
-      },
-      {
-        id: 5,
-        name: '龙岗'
-      },
-      {
-        id: 6,
-        name: '龙华'
-      },
-      {
-        id: 7,
-        name: '光明'
-      }
-    ],
-    index: 0,
-    className: "",
-    classStartTime: '',
-    classEndTime: '',
-    classTime: '12:01',
+    objectArray: [],
+    array_name: [],
+    index:0,
+    usertype:"",
     classLevel: "",
     building: "",
-    createdBy: "",
-    contactTel: ""
+    name: "",
+    contactTel: "",
+    email: ""
   },
 
+ 
+  bindName: function (e) {
+    name = e.detail.value;
+  //  console.log('name value is ',name)
+  },
+  //年级
+  bindGrade: function (e) {
+    grade = e.detail.value
+  },
+  //性别
+  bindradio: function (e) {
+    usertype = e.detail.value
+  },
+  //上课区域
   bindPickerChange: function (e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
+   // console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       index: e.detail.value
     })
+    console.log("打印22222", index);
   },
-  bindClassStartTimeChange: function (e) {
-    // classStartTime= e.detail.value
-    this.setData({
-      classStartTime: e.detail.value
-    })
-  },
-  bindClassEndTimeChange: function (e) {
-    this.setData({
-      classEndTime: e.detail.value
-    })
-  },
-  bindClassTimeChange: function (e) {
-    this.setData({
-      classTime: e.detail.value
-    })
-  },
-
-  bindClassName: function (e) {
-    this.setData({
-      className: e.detail.value
-    })
-  },
-
+  
+  //课程难度
   bindClassLevel: function (e) {
-    this.setData({
-      classLevel: e.detail.value
-    })
+    capibility = e.detail.value
   },
-
+  
+  //上课地点
   bindBuilding: function (e) {
-    this.setData({
-      building: e.detail.value
-    })
+    building = e.detail.value
   },
-  bindCreatedBy: function (e) {
-    this.setData({
-      createdBy: e.detail.value
-    })
+  //就读学校
+  bindSchool: function (e) {
+    school = e.detail.value
   },
-  bindContactTel: function (e) {
-    this.setData({
-      contactTel: e.detail.value
-    })
+  //联系电话
+  bindPhone: function (e) {
+    phone = e.detail.value
+  },
+  bindEmail: function (e) {
+    email = e.detail.value
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this;
+    //console.log("打印classname", options.classid);
+    classid = options.classid;
+     that.setData({
+       classname: options.classname,
+       classid: options.classid
+     })
 
+     var array_name = [],
+       objectArray = [
+         {
+           id: 0,
+           name: '福田'
+         },
+         {
+           id: 1,
+           name: '南山'
+         },
+         {
+           id: 2,
+           name: '罗湖'
+         },
+         {
+           id: 3,
+           name: '宝安'
+         },
+         {
+           id: 4,
+           name: '盐田'
+         },
+         {
+           id: 5,
+           name: '龙岗'
+         },
+         {
+           id: 6,
+           name: '龙华'
+         },
+         {
+           id: 7,
+           name: '光明'
+         }
+       ];
+     objectArray.forEach(function (e) {
+       array_name.push(e.name);
+     })
+     this.setData({ objectArray: objectArray, array_name: array_name });
+    // console.log("打印88888", index);
   },
 
   /**

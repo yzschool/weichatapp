@@ -22,11 +22,12 @@ App({
       })
     }
   },
+  
 
   onShareAppMessage: function () {
     return {
-      title: '微信小程序联盟',
-      desc: '最具人气的小程序开发联盟!',
+      title: '元桌课堂',
+      desc: '结伴成长!',
       path: '/page/user?id=123'
     }
   },
