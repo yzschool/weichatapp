@@ -1,4 +1,29 @@
 // queryList.js
+/*if (!Array.prototype.forEach) {
+  Array.prototype.forEach = function (callback, thisArg) {
+    var T, k;
+    if (this == null) {
+      throw new TypeError(" this is null or not defined");
+    }
+    var O = Object(this);
+    var len = O.length >>> 0; // Hack to convert O.length to a UInt32  
+    if ({}.toString.call(callback) != "[object Function]") {
+      throw new TypeError(callback + " is not a function");
+    }
+    if (thisArg) {
+      T = thisArg;
+    }
+    k = 0;
+    while (k < len) {
+      var kValue;
+      if (k in O) {
+        kValue = O[k];
+        callback.call(T, kValue, k, O);
+      }
+      k++;
+    }
+  };
+} */
 var item = [];
 Page({
 
@@ -26,21 +51,23 @@ Page({
         method: 'GET',
         //header: { 'content-type': 'application/json' },
         success: function (res) {
-          //console.log('this is get request result', res.statusCode);
-          var jsonStr = JSON.stringify(res.data);
-          var jsonPar = JSON.parse(jsonStr);
-          // var item = [];
-         // console.log(jsonStr);
-          that.setData({
-            jsonStr: res.data
-          });
+          console.log('this is get request result', res.statusCode);
+          if (res.statusCode==200){
+            var jsonStr = JSON.stringify(res.data);
+            var jsonPar = JSON.parse(jsonStr);
+            var item = [];
+            // console.log(jsonStr);
 
-          jsonPar.forEach(function (e) {
-            item.push(e);
-          })
-          that.setData({ jsonPar: jsonPar, item: item });
-
-
+            jsonPar.forEach(function (e) {
+              item.push(e);
+            })
+            that.setData({ item: item });
+          } else{
+            wx.showToast({
+              title: '找不到该课程',
+              image:"../../image/fail.png"
+            })
+          } 
         },
       })
     } else {
@@ -54,15 +81,12 @@ Page({
           var jsonStr = JSON.stringify(res.data);
           var jsonPar = JSON.parse(jsonStr);
           var item = [];
-        //  console.log(jsonStr);
-          that.setData({
-            jsonStr: res.data
-          });
+
 
           jsonPar.forEach(function (e) {
             item.push(e);
           })
-          that.setData({ jsonPar: jsonPar, item: item})
+          that.setData({item: item})
          
         },
       })

@@ -39,7 +39,7 @@ Page({
         console.log('this is get request result')
         var jsonStr = JSON.stringify(res.data);
         var jsonPar = JSON.parse(jsonStr);
-        console.log(jsonStr);
+       // console.log(jsonStr);
         classname = jsonPar.classname;
         classid = jsonPar.classid;
         

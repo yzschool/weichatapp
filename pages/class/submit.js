@@ -12,7 +12,10 @@ var classTime;
 var index;
 var classLevel;
 var contactTel="";
-Page({
+
+Page(
+  
+  {
   formSubmit: function (e) {
    // console.log('form发生了submit事件，携带数据为：', e.detail.value);
     var result = this.data.array_name[e.detail.value.selector];
@@ -97,9 +100,9 @@ Page({
   },
   formReset: function () {
     console.log('form发生了reset事件',className)
-    this.setData({
+   // this.setData({
       className: ''
-    })
+    //})
     console.log('form发生了reset事件', className)
   },
 
@@ -118,6 +121,7 @@ Page({
     building:" ",
     createdBy:" ",
     contactTel:" "
+
   },
 
 //课程名
