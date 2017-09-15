@@ -1,49 +1,52 @@
 <!--memberInfo.wxml-->
 <view class="container">
+  <view class="viewAll">
 
-  <view class="head">成员信息</view>
-  <!--<view class="views">
+    <!--  <view class="head">成员信息</view>-->
+    <!--<view class="views">
     <button class="list" bindtap="memberBtn">已加入人员</button>
     <button class="submits" bindtap="enrollBtn">点击报名</button>
   </view>-->
-  <view class="view1">
-    <view class="textAll">学生姓名:</view>
-    <view class="className">{{name}}</view>
-  </view>
-  <view class="view1">
-    <view class="textAll">性别:</view>
-    <view class="className">{{usertype}}</view>
-  </view>
-  <view class="view1">
-    <view class="textAll">就读年级:</view>
-    <view class="className">{{grade}}</view>
-  </view>
+    <view class="viewHead">
+      <view class="viewR">
+        <view class="textAllR">学生姓名:</view>
+        <view class="classNameR">{{name}}</view>
+      </view>
+      <view class="viewR">
+        <view class="textAllR">性别:</view>
+        <view class="classNameR">{{usertype}}</view>
+      </view>
+      <view class="viewR">
+        <view class="textAllR">就读年级:</view>
+        <view class="classNameR">{{grade}}</view>
+      </view>
 
-  <view class="view1">
-    <view class="textAll">课程难度:</view>
-    <view class="className">{{capibility}}</view>
-  </view>
+      <view class="viewR">
+        <view class="textAllR">课程难度:</view>
+        <view class="classNameR">{{capibility}}</view>
+      </view>
 
-  <view class="view1">
-    <view class="textAll">上课区域:</view>
-    <view class="className">{{city}}-{{district}}</view>
-  </view>
+      <view class="viewR">
+        <view class="textAllR">上课区域:</view>
+        <view class="classNameR">{{city}}-{{district}}</view>
+      </view>
 
-  <view class="view1">
-    <view class="textAll">上课地点:</view>
-    <view class="className">{{building}}</view>
+      <view class="viewR">
+        <view class="textAllR">上课地点:</view>
+        <view class="classNameR">{{building}}</view>
+      </view>
+      <view class="viewR">
+        <view class="textAllR">就读学校:</view>
+        <view class="classNameR">{{school}}</view>
+      </view>
+      <view class="viewR">
+        <view class="textAllR">联系电话:</view>
+        <view class="classNameR">{{phone}}</view>
+      </view>
+      <view class="viewR">
+        <view class="textAllR">电子邮件:</view>
+        <view class="classNameR">{{email}}</view>
+      </view>
+    </view>
   </view>
-  <view class="view1">
-    <view class="textAll">就读学校:</view>
-    <view class="className">{{school}}</view>
-  </view>
-  <view class="view1">
-    <view class="textAll">联系电话:</view>
-    <view class="className">{{phone}}</view>
-  </view>
-  <view class="view1">
-    <view class="textAll">电子邮件:</view>
-    <view class="className">{{email}}</view>
-  </view>
-
 </view>

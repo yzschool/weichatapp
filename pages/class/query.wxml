@@ -1,7 +1,7 @@
-<form bindsubmit="formSubmit" bindreset="formReset">
+<!--<form bindsubmit="formSubmit" bindreset="formReset">
   <view class="view1" style="margin-top:50rpx;">
     <view class="textAll">课程名称：</view>
-    <input name="className" bindchange="bindClssname"  class="className" maxlength="20" type="text" auto-focus />
+    <input name="className" bindchange="bindClssname" class="className" maxlength="20" type="text" auto-focus />
   </view>
 
 
@@ -10,7 +10,61 @@
 
   </view>
   <view class="okView">
-    <button formType="submit" type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}"  hover-class="other-button-hover" bindtap="clicked" class="okBtn">查询</button>
+    <button formType="submit" type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" hover-class="other-button-hover" bindtap="clicked" class="okBtn">查询</button>
 
   </view>
+</form>
+<template name="zcSearch1">
+  <view class="element search {{data.customFeature.ifLocation?'another-style':''}}" style="{{data.style}}">
+    <view class="ico-moon icon-location location {{data.customFeature.ifLocation?'':'hide'}}" data-param="{{data.customFeature.ifLocation}}" catchtap="turnToSearchPage">全国</view>
+    <view class="search-input">
+       <icon size="14" type="search"></icon>
+       <view bindtap="turnToSearchPage" data-form="{{data.customFeature.searchObject.customFeature.form}}" class="fakeSearch {{data.customFeature.searchObject.type=='goods-list'?'':'hide'}}" >{{data.content.placeholder}}</view>
+       <input data-compid="search1" class="{{data.customFeature.searchObject.type=='goods-list'?'hide':''}}" bindinput="bindSearchTextChange" name="input" placeholder="{{data.content.placeholder}}" confirm-type="search"/>
+       <view data-compid="search1"
+             data-listid="{{data.customFeature.searchObject.customFeature.id}}"
+             data-listtype="{{data.customFeature.searchObject.type}}"
+             data-form="{{data.customFeature.searchObject.customFeature.form}}"
+            class="search-btn" bindtap="searchList">搜索</view>
+    </view>
+  </view>
+</template>-->
+<form bindsubmit="formSubmit" bindreset="formReset">
+  <!--<view class="searchView">
+    <input class="searchInput" name="classLevel" placeholder="请输入课程名称进行搜索" />
+  </view>-->
+  <view class="searchView">
+    <view class="searchView1">
+      <image src="http://yzschool.com.cn/images/weiCode/search.png"></image>
+      <input bindchange="bindClssname" class="searchInput" name="classLevel" placeholder="请输入课程名称进行搜索" />
+      <button formType="submit" class="searchBtn">搜索</button>
+    </view>
+  </view>
+  <swiper class="swiper" indicator-dots="true" autoplay="true" interval="4000" duration="1000">
+    <block wx:for="{{movies}}" wx:for-index="index">
+      <swiper-item>
+        <image src="{{item.url}}" class="slide-image" mode="aspectFill" />
+      </swiper-item>
+    </block>
+  </swiper>
+
+  <view class="navView">
+    <view class="nav">
+      <text class="navText">课程简介</text>
+    </view>
+  </view>
+  <view class="line">
+  </view>
+  <view wx:for="{{views}}" wx:for-index="key">
+    <view class="listView"  id="{{key}}" bindtap="infoBtn">
+      <view class="leftView">
+        <image src="{{item.image}}"></image>
+      </view>
+      <view class="rightView">
+        <text class="title">{{item.title}}</text>
+        <text class="tips">{{item.tips}}</text>
+      </view>
+    </view>
+  </view>
+
 </form>

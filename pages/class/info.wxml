@@ -1,0 +1,30 @@
+<!--info.wxml-->
+<view>
+  <view class="headView">
+    <text class="title">{{item[i].title}}</text>
+  </view>
+  <view class="contentView">
+    <text class="content">{{item[i].content}}</text>
+  </view>
+  <view class="imageView">
+    <view class="img">
+      <image src="{{item[i].movies[0].url}}"></image>
+      <view class="titleImg">
+        <text>图片1</text>
+      </view>
+    </view>
+    <view class="img" style="margin-left:1.25%;">
+      <image src="{{item[i].movies[1].url}}"></image>
+      <view class="titleImg">
+        <text>图片2</text>
+      </view>
+    </view>
+    <view class="img" style="margin-left:1.25%;">
+      <image src="{{item[i].movies[2].url}}"></image>
+      <view class="titleImg">
+        <text>图片3</text>
+      </view>
+    </view>
+
+  </view>
+</view>

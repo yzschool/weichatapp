@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/class/submit",
     "pages/class/query",
+    "pages/class/submit",
     "pages/logs/logs",
     "pages/index/index",
     "pages/class/submitRst",
@@ -10,20 +10,22 @@
     "pages/class/memberList",
     "pages/class/queryList",
     "pages/class/memberInfo",
-    "pages/class/subPage"
+    "pages/class/subPage",
+    "pages/class/info"
   ],
   "window": {
-    "navigationBarTitleText": "元卓课堂"
+    "navigationBarTitleText": "南方微学"
   },
   "tabBar": {
     "color": "#dddddd",
     "selectedColor": "#3cc51f",
+    "height": "500rpx",
     "list": [
       {
-        "pagePath": "pages/index/index",
-        "text": "元卓课堂",
-        "iconPath": "image/1-grey.png",
-        "selectedIconPath": "image/1.png"
+        "pagePath": "pages/class/query",
+        "text": "查询拼班",
+        "iconPath": "image/3-grey.png",
+        "selectedIconPath": "image/3.png"
       },
       {
         "pagePath": "pages/class/submit",
@@ -32,10 +34,10 @@
         "selectedIconPath": "image/2.png"
       },
       {
-        "pagePath": "pages/class/query",
-        "text": "查询拼班",
-        "iconPath": "image/3-grey.png",
-        "selectedIconPath": "image/3.png"
+        "pagePath": "pages/index/index",
+        "text": "元卓课堂",
+        "iconPath": "image/1-grey.png",
+        "selectedIconPath": "image/1.png"
       }
     ]
   },

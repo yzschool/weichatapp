@@ -1,63 +1,35 @@
 <!--index.wxml-->
 <view class="container">
-
-  <view class="head">课程信息</view>
-  <view class="views">
-    <button class="list" bindtap="memberBtn">已加入人员</button>
-    <button class="submits" bindtap="enrollBtn">点击报名</button>
+  <view class="btnR">
+    <view class="list" bindtap="memberBtn">学生名单</view>
+    <view class="submits" bindtap="enrollBtn">点击报名</view>
   </view>
-  <view class="view1">
-    <view class="textAll">课程名称:</view>
-    <view class="className">{{className}}</view>
+  <view class="viewAll">
+    <view class="viewHead">
+      <view class="viewR">
+        <view class="textAllR">课程名称</view>
+        <view class="classNameR">{{className}}</view>
+      </view>
+      <view class="viewR">
+        <view class="textAllR">年级</view>
+        <view class="classNameR">{{grade}}</view>
+      </view>
+      <view class="viewR" style="background-color:pink;">
+        <view class="textAllR">上课时间</view>
+        <view class="classNameR">{{startTime}}至{{endTime}} {{peroid}} {{classtime}}</view>
+      </view>
+      <view class="viewR" style="background-color:yellow;">
+        <view class="textAllR">上课地址</view>
+        <view class="classNameR">{{city}}市{{district}}区 {{building}}</view>
+
+      </view>
+      <view class="viewR" style="background-color:grey;">
+        <view class="textAllR">联系方式</view>
+        <view class="classNameR">{{creater}}：{{tel}}</view>
+      </view>
+
+    </view>
   </view>
-
-  <view class="view1">
-    <view class="textAll">创建人:</view>
-    <view class="className">{{creater}}</view>
-  </view>
-
-  <view class="view1">
-    <view class="textAll">开始时间:</view>
-    <view class="className">{{startTime}}</view>
-  </view>
-
-
-   <view class="view1">
-    <view class="textAll">结束时间:</view>
-    <view class="className">{{endTime}}</view>
-  </view>
-
-
-  <view class="view1">
-    <view class="textAll">星期:</view>
-    <view class="className">{{peroid}}</view>
-  </view>
-
-  <view class="view1">
-    <view class="textAll">上课时间:</view>
-    <view class="className">{{classtime}}</view>
-  </view>
-
-
-  <view class="view1">
-    <view class="textAll">年级:</view>
-    <view class="className">{{grade}}</view>
-  </view>
-
-  <view class="view1">
-    <view class="textAll">上课区域:</view>
-    <view class="className">{{city}}-{{district}}</view>
-  </view>
-
-  <view class="view1">
-    <view class="textAll">上课地点:</view>
-    <view class="className">{{building}}</view>
-  </view>
-
-  
-
-
-
 
 
 

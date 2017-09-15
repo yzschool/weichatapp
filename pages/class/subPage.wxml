@@ -1,2 +1,4 @@
-
-<text>提交结果：{{result}}</text>
+<view class="viewPage">
+  <image src="{{item[i].image}}"></image>
+  <text>{{item[i].text}}</text>
+</view>

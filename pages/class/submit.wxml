@@ -1,13 +1,15 @@
 <form bindsubmit="formSubmit" bindreset="formReset">
-
-  <view class="view1" style="margin-top:50rpx;">
+  <view class="view1" style="height:80rpx;">
+    <label style="color:grey; display:block;line-height:80rpx;font-size:30rpx; text-align:center;">请认真将下列信息填写完整</label>
+  </view>
+  <view class="view1">
     <view class="textAll">课程名称:</view>
-    <input name="className" class="className" maxlength="20" type="text"  bindinput="bindChange"  auto-focus />
+    <input name="className" placeholder="请输入课程名" class="className" maxlength="20" type="text" bindinput="bindChange" />
   </view>
 
   <view class="view1">
     <view class="textAll">姓名：</view>
-    <input name="createdBy" class="className" maxlength="20" type="text" bindchange="bindCreatedBy" />
+    <input name="createdBy" placeholder="请输入姓名" class="className" maxlength="20" type="text" bindchange="bindCreatedBy" />
   </view>
 
   <view class="view1">
@@ -15,14 +17,14 @@
       性别：
       <label class="sexy">
         <radio value="男" checked="true" />男</label>
-      <label class="sexy">
+      <label class="sexy1">
         <radio style="margin-left:15px;" value="女" />女</label>
     </radio-group>
   </view>
 
   <view class="view1">
     <text class="textAll">年级：</text>
-    <input class="className" bindchange="bindGrade" />
+    <input class="className" placeholder="请输入年级" bindchange="bindGrade" />
   </view>
 
 
@@ -50,7 +52,7 @@
   </view>
   <view class="view1">
     <text class="textAll">星期：</text>
-    <input name="week"  class="className" bindchange="bindWeek"/>
+    <input name="week" placeholder="请输星期" class="className" bindchange="bindWeek" />
   </view>
 
   <view class="view1">
@@ -64,7 +66,7 @@
 
   <view class="view1">
     <view class="textAll">课程难度:</view>
-    <input name="classLevel" class="className" maxlength="20" type="text" bindchange="bindClassLevel" />
+    <input name="classLevel" placeholder="请输入课程难度" class="className" maxlength="20" type="text" bindchange="bindClassLevel" />
   </view>
 
   <view class="view1">
@@ -78,30 +80,25 @@
 
   <view class="view1">
     <view class="textAll">上课地点:</view>
-    <input name="building" class="className" maxlength="20" type="text" bindchange="bindBuilding" />
+    <input name="building" placeholder="请输入上课地址" class="className" maxlength="20" type="text" bindchange="bindBuilding" />
   </view>
 
 
 
   <view class="view1">
     <view class="textAll">联系电话:</view>
-    <input name="contactTel" class="className" maxlength="20" type="number" bindchange="bindContactTel" />
+    <input name="contactTel" placeholder="请输入联系电话" class="className" maxlength="20" type="number" bindchange="bindContactTel" />
 
   </view>
-
 <!--
-  <view class="btn-area">
-    <button formType="submit">确定</button>
-    <button formType="reset">重置</button>
-  </view>
--->
   <view class="okView">
-      <button formType="reset" type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}"hover-class="other-button-hover" class="okBtn">重置</button>
+    <button formType="reset" type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" hover-class="other-button-hover" class="okBtn">重置</button>
 
-    </view>
-    <view class="okView">
-      <button formType="submit" type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" hover-class="other-button-hover" class="okBtn">创建</button>
+  </view>-->
+  <view class="okView">
+    <button formType="submit" type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" hover-class="other-button-hover" class="okBtn">创建</button>
 
-    </view>
+  </view>
+  <view style="height:50rpx;"></view>
 
 </form>

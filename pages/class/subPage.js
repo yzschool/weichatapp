@@ -1,10 +1,21 @@
 // subPage.js
+var i;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    item:[
+      {
+        text:"提交成功",
+        image:"http://yzschool.com.cn/images/weiCode/ok.png"
+      },
+      {
+        text: "提交失败",
+        image: "http://yzschool.com.cn/images/weiCode/failed.png"
+      }
+    ]
   
   },
 
@@ -13,9 +24,15 @@ Page({
    */
   onLoad: function (options) {
     console.log("lalal", options.result)
+    if (options.result == "成功") {
+      i = 0;
+    } else {
+      i = 1;
+    }
     this.setData({
-      result: options.result
-    }) 
+      result: options.result,
+      i:i
+    })
   },
 
   /**

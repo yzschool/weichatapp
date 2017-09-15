@@ -1,4 +1,29 @@
 /* memberInfo.wxss */
+.viewAll{
+  width: 100%;
+  border-top: 1px solid #e6e6e6;
+  border-bottom: 1px solid #e6e6e6;
+}
+.viewHead{
+  margin-left: 30rpx;
+  margin-right: 0;
+}
+.textAllR{
+  display: block;
+ /* padding-left: 50rpx;*/
+  color: black;
+  float: left;
+  line-height: 80rpx;
+  text-align: left;
+  width: 200rpx;
+}
+.viewR{
+  width: 100%;
+  line-height: 80rpx;
+  display: block;
+  /*height: 80rpx;*/
+  font-size: 36rpx;
+}
 .head{
   width: 100%;
   height: 100rpx;
@@ -42,10 +67,11 @@
   line-height:70rpx;
   font-size: 32rpx;
 }
-.className{
+.classNameR{
+  width: 65%;
   float: left;
-  height: 50rpx;
+  line-height: 80rpx;
   text-align: left;
   padding-left: 10rpx;
-  width: 60%;
+  display: block;
 }

@@ -5,10 +5,10 @@ var createdBy;
 var building;
 var grade;
 var usertype="男";
-var classStartTime;
-var classEndTime;
+var classStartTime ="2017-09-01";
+var classEndTime = "2017-09-01";
 var week;
-var classTime;
+var classTime = "00:00";
 var index;
 var classLevel;
 var contactTel="";
@@ -20,8 +20,8 @@ Page(
    // console.log('form发生了submit事件，携带数据为：', e.detail.value);
     var result = this.data.array_name[e.detail.value.selector];
     this.setData({ result:result});
-    if (contactTel.length==11){
-      if (className && createdBy && building && contactTel) {
+     if (contactTel.length==11){
+      if (className && createdBy && building && contactTel && grade) {
         wx.request({
           url: 'https://www.yzschool.com.cn/weichat/class',
           method: 'POST',
@@ -41,8 +41,7 @@ Page(
             "grade": grade
           },
           header: {
-            /* 'content-type': 'application/x-www-form-urlencoded'*/
-            'content-type': 'application/json'
+              'content-type': 'application/json'
           },
           success: function (res) {
             wx.showToast({
@@ -50,7 +49,6 @@ Page(
               icon: 'loadings',
               duration: 4000
             })
-            //console.log(res.data)
             wx.navigateTo({
               url: 'subPage?result=成功'
             })
@@ -59,9 +57,6 @@ Page(
           },
 
           fail: function (res) {
-            /*wx.navigateTo({
-              url: 'submitRst?result=失败'
-            })*/
             wx.showToast({
               title: '提交失败',
               image: "../../image/fail.png",
@@ -72,7 +67,6 @@ Page(
       } else {
         wx.showToast({
           title: '信息不完整',
-          //icon: 'loadings',
           image: "../../image/fail.png",
           duration: 4000
         })
@@ -80,7 +74,6 @@ Page(
     } else if (contactTel.length == 0) {
       wx.showToast({
         title: '信息不完整',
-        //icon: 'loadings',
         image: "../../image/fail.png",
         duration: 2000
       })
@@ -88,7 +81,6 @@ Page(
       wx.showToast({
         title: '号码为11位',
         width:"300px",
-        //icon: 'fail',
         image: "../../image/fail.png",
         duration: 2000
       })
@@ -114,9 +106,9 @@ Page(
     array_name:[],
     index: 0,
     className:"",
-    classStartTime:' ',
-    classEndTime: ' ',
-    classTime: ' ',
+    classStartTime:'2017-09-01',
+    classEndTime: '2017-09-01',
+    classTime: '00:00',
     classLevel:" ",
     building:" ",
     createdBy:" ",

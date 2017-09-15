@@ -1,5 +1,6 @@
 // memberList.js
 var studentid;
+var l;
 Page({
   /**
    * 页面的初始数据
@@ -22,6 +23,8 @@ Page({
     var itemStudent = [];
     var itemName = [];
     var itemIDs = [];
+    l = options.len;
+    console.log("由课程信息页面传到学生列表的数据：", l);
    // console.log("由课程信息页面传到学生列表的数据：",options.classid);
     wx.request({
       url: 'https://www.yzschool.com.cn/weichat/class/' + options.classid,
@@ -50,7 +53,7 @@ Page({
             url: 'https://www.yzschool.com.cn/weichat/student/' + item[i],
             method: 'GET',
             success: function (res) {
-              //console.log("asd8", res.data);
+              console.log("asd8", res.data);
               var jsonStrs = JSON.stringify(res.data);
               a1 = jsonStrs;
               //console.log("asd", jsonStrs);
@@ -60,6 +63,7 @@ Page({
               var jsonStudent = JSON.stringify(itemStudent);
           //    console.log("i value is ", i + " itemStudent is ", itemIDs[0]);
               that.setData({
+                l:l,
                 itemStudent: itemName,
                 itemIDs: itemIDs
               })

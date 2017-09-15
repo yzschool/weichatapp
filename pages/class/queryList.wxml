@@ -1,5 +1,17 @@
 <!--queryList.wxml-->
-<view class="view1" wx:for="{{item}}" wx:for-index='key'  >
-      <view class="text" bindtap="clickedItem" id="{{key}}">{{item.classname}}-{{item.grade}}-{{item.district}}-{{item.building}}</view>
-      
+<!--<view class="view2" wx:for="{{item}}" wx:for-index='key'>
+  <view class="text" bindtap="clickedItem" id="{{key}}">{{item.classname}}-{{item.grade}}-{{item.district}}</view>
+
+</view>
+-->
+
+<view class="viewL">
+  <view class="view2" wx:for="{{item}}" wx:for-index='key'>
+    <image src="http://yzschool.com.cn/images/weiCode/course.png" class="classImg"></image>
+    <view class="text" bindtap="clickedItem" id="{{key}}">
+      <view class="textT">{{item.classname}}</view>
+      <view class="textC">·{{item.grade}}·{{item.district}}·</view>
     </view>
+
+  </view>
+</view>

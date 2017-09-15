@@ -1,6 +1,7 @@
 // queryRst.js
 var classname;
 var classid;
+var len;
 Page({
   enrollBtn: function () {
     //console.log("className is ",classname);
@@ -10,9 +11,10 @@ Page({
 
   },
   memberBtn:function(){
+    console.log("className is ", len);
     wx.navigateTo({
      // url:'../class/memberList?classname='+classname+'&classid='+classid
-      url: '../class/memberList?classid=' + classid 
+      url: '../class/memberList?classid=' + classid +'&len=' + len,
     })
   },
   
@@ -42,7 +44,7 @@ Page({
        // console.log(jsonStr);
         classname = jsonPar.classname;
         classid = jsonPar.classid;
-        
+        len = jsonPar.studentsid.length;
         that.setData({ 
           info: jsonStr,
           className: jsonPar.classname,
@@ -54,6 +56,7 @@ Page({
           endTime: jsonPar.endtime,
           district: jsonPar.district,
           building: jsonPar.building,
+          tel: jsonPar.tel,
           city: jsonPar.city});
 
       },

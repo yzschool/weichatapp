@@ -1,1 +1,18 @@
 /* subPage.wxss */
+.viewPage{
+  width: 100%;
+}
+.viewPage image{
+  width: 100rpx;
+  height: 100rpx;
+  margin: auto;
+  margin-top: 100rpx;
+  display: block;
+}
+.viewPage text{
+  display: block;
+  margin: auto;
+  text-align: center;
+  line-height: 80rpx;
+  font-size: 36rpx; 
+}

@@ -1,18 +1,16 @@
 <!--enroll.wxml-->
-<view class="head">信息填写</view>
+<!--<view class="head">信息填写</view>-->
 
 <form bindsubmit="formSubmit" bindreset="formReset">
-<!--课程名称应该自动填入-->
+  <!--课程名称应该自动填入-->
   <view class="view1">
     <view class="textAll">课程名称:</view>
-  <!--<input name="className" class="className" maxlength="20" type="text" bindinput="bindClassName" auto-focus />
- -->  
-  <view class="classname">{{classname}}</view>
+    <view class="classname" style="display:inline; margin-left:20rpx;">{{classname}}</view>
   </view>
 
   <view class="view1">
     <view class="textAll">姓名:<label style="color:red;">*</label></view>
-    <input name="name" class="className" maxlength="20" type="text" bindchange="bindName" />
+    <input name="name" placeholder="请输入姓名" class="className" maxlength="20" type="text" bindchange="bindName" />
   </view>
 
   <view class="view1">
@@ -20,56 +18,19 @@
       性别：
       <label class="sexy">
         <radio value="男" checked="true" />男</label>
-      <label class="sexy">
+      <label class="sexy1">
         <radio style="margin-left:15px;" value="女" />女</label>
     </radio-group>
   </view>
 
   <view class="view1">
     <text class="textAll">年级：</text>
-    <input class="className" bindchange="bindGrade" />
+    <input class="className" placeholder="请输入年级" bindchange="bindGrade" />
   </view>
 
-
-<!--
-
-  <view class="view1">
-    <view class="textAll">开始时间：</view>
-    <picker mode="date" value="{{date}}" start="date" end="2030-09-01" bindchange="bindClassStartTimeChange">
-      <view class="className">
-        {{classStartTime}}
-      </view>
-    </picker>
-  </view>
-
-
-
-
-  <view class="view1">
-    <view class="textAll">结束时间：</view>
-    <picker mode="date" value="{{date}}" start="date" end="classEndTime" bindchange="bindClassEndTimeChange">
-      <view class="className">
-        {{classEndTime}}
-      </view>
-    </picker>
-  </view>
-  <view class="view1">
-    <text class="textAll">星期：</text>
-    <input class="className" />
-  </view>
-
-  <view class="view1">
-    <view class="textAll">上课时间：</view>
-    <picker mode="time" value="{{classTime}}" start="00:00" end="23:59" bindchange="bindClassTimeChange">
-      <view class="className">
-        {{classTime}}
-      </view>
-    </picker>
-  </view>
--->
   <view class="view1">
     <view class="textAll">课程难度:</view>
-    <input name="classLevel" class="className" maxlength="20" type="text" bindchange="bindClassLevel" />
+    <input name="classLevel" placeholder="请输入课程难度" class="className" maxlength="20" type="text" bindchange="bindClassLevel" />
   </view>
 
   <view class="view1">
@@ -83,41 +44,46 @@
 
   <view class="view1">
     <view class="textAll">上课地点:</view>
-    <input name="building" class="className" maxlength="20" type="text" bindchange="bindBuilding" />
+    <input name="building" placeholder="请输入上课地址" class="className" maxlength="20" type="text" bindchange="bindBuilding" />
   </view>
 
   <view class="view1">
     <text class="textAll">就读学校：</text>
-    <input class="className" maxlength="20" type="text" bindchange="bindSchool"/>
+    <input class="className" placeholder="请输入学校" maxlength="20" type="text" bindchange="bindSchool" />
   </view>
 
 
 
   <view class="view1">
     <view class="textAll">联系电话:<label style="color:red;">*</label></view>
-    <input name="contactTel" class="className" maxlength="20" type="text" bindchange="bindPhone" />
+    <input name="contactTel" placeholder="请输入联系电话" class="className" maxlength="20" type="text" bindchange="bindPhone" />
 
   </view>
 
   <view class="view1">
     <view class="textAll">电子邮箱:</view>
-    <input name="email" class="className" maxlength="20" type="text" bindchange="bindEmail" />
+    <input name="email" placeholder="请输入电子邮箱" class="className" maxlength="20" type="text" bindchange="bindEmail" />
 
   </view>
 
-<!--
+  <!--
   <view class="btn-area">
     <button formType="submit">确定</button>
     <button formType="reset">重置</button>
   </view>
 -->
+  <!--
   <view class="okView">
-      <button formType="reset" type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}"hover-class="other-button-hover" class="okBtn">重置</button>
+    <button formType="reset" type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" hover-class="other-button-hover" class="okBtn">重置</button>
 
-    </view>
-    <view class="okView">
-      <button formType="submit" type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" bindtap="createAction" hover-class="other-button-hover" class="okBtn">报名</button>
+  </view>
+  <view class="okView">
+    <button formType="submit" type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" bindtap="createAction" hover-class="other-button-hover" class="okBtn">报名</button>
 
-    </view>
+  </view>-->
+  <view class="okView">
+    <button formType="submit" type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" hover-class="other-button-hover" class="okBtn">创建</button>
+
+  </view>
 
 </form>

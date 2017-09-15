@@ -1,5 +1,5 @@
 /* submit.wxss */
-.textAll{
+/*.textAll{
   padding-left: 50rpx;
   color: black;
   float: left;
@@ -22,28 +22,13 @@
   text-align: left;
   padding-left: 10rpx;
   width: 60%;
-}
+}*/
 .sex{
   padding-left: 50rpx;
 }
 .sexy{
-  margin-left:50rpx; 
+  margin-left:70rpx; 
 }
-.okView{
-  width: 50%;
-  float: left;
-  height: 100rpx;
-  background-color: white;
-  margin-top: 70rpx;
-}
-.okBtn{
-  top: 15rpx;
-  width: 200rpx;
-  height: 70rpx;
-  line-height: 70rpx;
-  font-size: 32rpx;
-  color: white;
-  text-align: center;
-  background-color: pink;
-
+.sexy1{
+  margin-left:20rpx; 
 }

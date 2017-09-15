@@ -27,6 +27,26 @@ Page({
         }else{
           jsonPar.email="未填写"
         }
+        if (jsonPar.grade) {
+          jsonPar.grade = jsonPar.grade
+        } else {
+          jsonPar.grade = "未填写"
+        }
+        if (jsonPar.capibility) {
+          jsonPar.capibility = jsonPar.capibility
+        } else {
+          jsonPar.capibility = "未填写"
+        }
+        if (jsonPar.school) {
+          jsonPar.school = jsonPar.school
+        } else {
+          jsonPar.school = "未填写"
+        }
+        if (jsonPar.building) {
+          jsonPar.building = jsonPar.building
+        } else {
+          jsonPar.building = "未填写"
+        }
         that.setData({
           info: jsonStr,
           name:jsonPar.name,
