@@ -7,7 +7,14 @@ Page({
    * 页面的初始数据
    */
   data: {
+    Mshow: false
 
+  },
+
+  showChange: function (e) {
+    this.setData({
+      Mshow: true
+    })
   },
 
   /**
@@ -42,6 +49,8 @@ Page({
               image: "../../image/fail.png"
             })
           }
+          that.showChange();
+          /*console.log("hhhhhh ", Mshow);*/
 
         },
       })
@@ -72,6 +81,8 @@ Page({
               image: "../../image/fail.png"
             })
           }
+          that.showChange();
+          //console.log("hhhhhh ", Mshow);
         },
       })
     }

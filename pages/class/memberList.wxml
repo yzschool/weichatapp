@@ -1,6 +1,11 @@
 <!--memberList.wxml-->
+<view class="container">
 
 
+  <view class="viewL" style="height:80rpx;" hidden="{{Mshow}}">
+    <label style="color:grey; display:block;line-height:80rpx;font-size:30rpx; text-align:center;">当前课程还没有学生加入哦！</label>
+  </view>
   <view class="viewList" wx:for="{{itemStudent}}" wx:for-index='key'>
     <view class="text" bindtap="messageShow" id="{{key}}">{{key+1}}: {{itemStudent[key]}}</view>
   </view>
+</view>

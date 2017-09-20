@@ -6,11 +6,18 @@ Page({
    * 页面的初始数据
    */
   data: {
+    Mshow: false,
     items: [{
       message: '张莹-6年级',
     }, {
       message: '王杰-5年级'
     }]
+  },
+
+  showChange: function (e) {
+    this.setData({ 
+      Mshow: true 
+      });
   },
   /**
    * 生命周期函数--监听页面加载
@@ -66,7 +73,9 @@ Page({
                 l:l,
                 itemStudent: itemName,
                 itemIDs: itemIDs
-              })
+              });
+              that.showChange();
+              console.log("hhhhhh ",Mshow);
             }
           })
         }

@@ -36,7 +36,7 @@
   <view class="searchView">
     <view class="searchView1">
       <image src="http://yzschool.com.cn/images/weiCode/search.png"></image>
-      <input bindchange="bindClssname" class="searchInput" name="classLevel" placeholder="请输入课程名称进行搜索" />
+      <input bindinput="bindClssname" class="searchInput" name="classLevel" placeholder="请输入课程名称进行搜索" />
       <button formType="submit" class="searchBtn">搜索</button>
     </view>
   </view>

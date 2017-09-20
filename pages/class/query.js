@@ -2,7 +2,7 @@
 var className="";
 Page({
   formSubmit: function (e) {
-   // console.log('form发生了submit事件，携带数据为：', className);
+    console.log('form发生了submit事件，携带数据为：', className);
     wx.navigateTo({
       url: '../class/queryList?name=' + className
     })
@@ -11,7 +11,7 @@ Page({
 
   
   formReset: function () {
-  //  console.log('form发生了reset事件')
+    console.log('form发生了reset事件')
   },
   /**
    * 页面的初始数据

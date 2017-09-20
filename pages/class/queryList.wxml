@@ -6,6 +6,9 @@
 -->
 
 <view class="viewL">
+  <view class="view1" style="height:80rpx;" hidden="{{Mshow}}">
+    <label style="color:grey; display:block;line-height:80rpx;font-size:30rpx; text-align:center;">还没有创建的课程班级哦！</label>
+  </view>
   <view class="view2" wx:for="{{item}}" wx:for-index='key'>
     <image src="http://yzschool.com.cn/images/weiCode/course.png" class="classImg"></image>
     <view class="text" bindtap="clickedItem" id="{{key}}">
