@@ -1,0 +1,22 @@
+<!--login.wxml-->
+<form bindsubmit="formSubmit" bindreset="formReset">
+  <view class="view1">
+    <view class="textAll">账号:</view>
+    <input name="className" placeholder="管理员账号" class="className" maxlength="20" type="text" bindinput="userName" />
+  </view>
+
+   <view class="view1">
+    <view class="textAll">密码:</view>
+    <input name="className" placeholder="密码" class="className" maxlength="20" type="password" bindinput="passWord" />
+  </view>
+
+
+ 
+
+  <view class="okView">
+    <button formType="submit" type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" hover-class="other-button-hover" class="okBtn">登录</button>
+
+  </view>
+  <view style="height:50rpx;"></view>
+
+</form>

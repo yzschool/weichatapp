@@ -27,14 +27,16 @@
   width: 160rpx;
 }
 .className{
-  float: left;
+ /* float: left;*/
+ margin-left: 160rpx;
+ margin-right: 0;
  /* border: 1px solid black;
   border-radius: 3rpx;
   margin-top: 10rpx;*/
   height: 100rpx;
   text-align: left;
   padding-left: 20rpx;
-  width: 60%;
+  /*width: 60%;*/
 }
 .picker{
   float: left;

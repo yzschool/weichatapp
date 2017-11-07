@@ -11,7 +11,11 @@
     "pages/class/queryList",
     "pages/class/memberInfo",
     "pages/class/subPage",
-    "pages/class/info"
+    "pages/class/info",
+    "pages/index/barCode",
+    "pages/barCode/login",
+    "pages/barCode/bookInfo",
+    "pages/barCode/bookBorrow"
   ],
   "window": {
     "navigationBarTitleText": "南方微学"
@@ -32,6 +36,12 @@
         "text": "我要拼班",
         "iconPath": "image/2-grey.png",
         "selectedIconPath": "image/2.png"
+      },
+      {
+        "pagePath": "pages/barCode/login",
+        "text": "图书借还",
+        "iconPath": "image/4-grey.png",
+        "selectedIconPath": "image/4.png"
       },
       {
         "pagePath": "pages/index/index",

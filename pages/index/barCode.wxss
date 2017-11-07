@@ -1,0 +1,36 @@
+/* barCode.wxss */
+.show-view{
+  /*background-color: orange;*/
+  position: relative;
+  height: 140rpx;
+  border-bottom: 1px solid #ddd;
+}
+.show-view .cover-thumb {
+  width: 117.1875rpx;
+  height: 117.1875rpx;
+  margin-right: 58.59375rpx;
+	border-radius: 0%;
+	vertical-align: middle;
+}
+.show-view .empty-span {
+	display: inline-block;
+  /*background-color: pink;*/
+	width: 58.59375rpx;
+	height: 100%;
+	vertical-align: middle;
+}
+.show-view .nickname {
+  /*background-color: yellowgreen;*/
+	vertical-align: middle;
+}
+.show-view .icon-rightarrow {
+	position: absolute;
+  top: 50%;
+  /*background-color: red;*/
+  right: 23.4375rpx;
+  margin-top: -35.15625rpx;
+  width: 70.3125rpx;
+  height: 70.3125rpx;
+  line-height: 70.3125rpx;
+  font-size: 46.875rpx;
+}
