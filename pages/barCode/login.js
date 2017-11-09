@@ -1,6 +1,4 @@
 // login.js
-var userName = "";
-var passWord = "";
 var items = [];
 var location;
 Page({
@@ -9,30 +7,26 @@ Page({
    * 页面的初始数据
    */
   data: {
-   /* userName:'',
-    passWord:'',*/
-    id_token: '',//方便存在本地的locakStorage  
-    response: '' //存取返回数据 
-
+    userName: '',
+    userPassword: ''
   },
   formSubmit: function (e) {
-    if (userName && passWord) {
+    console.log("e.detail.value ", e.detail.value);
+    var objData = e.detail.value;
+    if (objData.userName && objData.userPassword) {
+      wx.setStorageSync('userName', objData.userName);
+      wx.setStorageSync('userPassword', objData.userPassword);
       var num=0;
       for (var i = 0; i < items.length; i++) {
-       /* console.log("i is ", i);
-        console.log("items is ", items[i]);
-        console.log("userName and passWord is ", userName, " + ", passWord);
-        console.log("items[i].username is ", items[i].name);*/
-        if (userName == items[i].name && passWord == items[i].password) {
+        /*console.log("i=", i, " items[i]= ", items[i], " userName=", objData.userName, " passWord=", objData.userPassword);*/
+        if (objData.userName == items[i].name && objData.userPassword == items[i].password) {
           console.log("success ");
           num = ++num;
-          /*console.log("success ", items[i].location);*/
           location = items[i].location;
           break;
         } 
       }
-     /* console.log("44444", num);
-      console.log("44444", location);*/
+      /*console.log("num=", num," location=",location);*/
       if(num==1){
         wx.navigateTo({
           url: '../index/barCode?location=' + location
@@ -60,27 +54,21 @@ Page({
     }
 
   },
-
-  //账号
-  bindUserName: function (e) {
-    userName= e.detail.value
-    console.log("username ", userName)
-  },
-  //密码
-  bindPassWord: function (e) {
-     passWord = e.detail.value
-  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     var that = this;
+    var userName = wx.getStorageSync('userName');
+    var userPassword = wx.getStorageSync('userPassword');
+    if (userName) {
+      that.setData({ userName: userName });
+    }
+    if (userPassword) {
+      that.setData({ userPassword: userPassword });
+    }
     wx.request({
-      url: 'https://www.yzschool.com.cn/weichat/book_admin',
-     data:{
-        name: this.data.userName,
-        password: this.data.passWord,
-      },
+     url: 'https://www.yzschool.com.cn/weichat/book_admin',
       method: 'GET',
       success: function (res) {
         console.log("admins are ", res.data)
@@ -88,17 +76,10 @@ Page({
         var par = JSON.parse(str);
         items = par
         that.setData({
-          items: items,
-          id_token: res.data.id_token,
-          response: res
+          items: items
         })
-        try {
-          wx.setStorageSync('id_token', res.data.id_token)
-        } catch (e) {
-        }
       }
     })
-
   },
 
   /**
