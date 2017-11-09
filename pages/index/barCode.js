@@ -29,20 +29,6 @@ Page({
         })
       }
     });
-  /*  wx.showModal({
-      title:"扫描结果",
-      content: "唯一编码：" , id,
-      success:function(res){
-        if(res.confirm){
-          wx.navigateTo({
-            url: '../barCode/bookBorrrow'
-          })
-        }else{
-          console.log("点击取消")
-        }
-      }
-    })*/
- 
   },
   //还书
   bindBack: function () {
@@ -93,50 +79,15 @@ Page({
     wx.navigateTo({
       url: '../barCode/bookBorrow?status=' + status 
     })
-  /*  wx.scanCode({
-      success: (res) => {
-        console.log('lalla', res.result);
-        var jsonStr = JSON.stringify(res);
-        console.log('lallaeee', jsonStr);
-        this.setData({
-          id: res.result
-        });
-        id = res.result;
-        console.log('lallas', status);
-        wx.navigateTo({
-          url: '../barCode/bookBorrow?id=' + id + "&status=" + status
-        })
-      }
-    });*/
-
   },
-  //删除
- /* bindDelete: function () {
-    var that = this;
-    status = 5;
-    wx.scanCode({
-      success: (res) => {
-        console.log('lalla', res.result);
-        var jsonStr = JSON.stringify(res);
-        console.log('lallaeee', jsonStr);
-        this.setData({
-          id: res.result
-        });
-        id = res.result;
-        console.log('lallas', status);
-        wx.navigateTo({
-          url: '../barCode/bookBorrow?id=' + id + "&status=" + status
-        })
-      }
-    });
-
-  },*/
+  
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var location=options.location;
+  console.log("444",location)
   },
 
   /**

@@ -2,12 +2,12 @@
 <form bindsubmit="formSubmit" bindreset="formReset">
   <view class="view1">
     <view class="textAll">账号:</view>
-    <input name="className" placeholder="管理员账号" class="className" maxlength="20" type="text" bindinput="userName" />
+    <input name="className" placeholder="管理员账号" class="className" maxlength="20" type="text" bindinput="bindUserName" />
   </view>
 
    <view class="view1">
     <view class="textAll">密码:</view>
-    <input name="className" placeholder="密码" class="className" maxlength="20" type="password" bindinput="passWord" />
+    <input name="className" placeholder="密码" class="className" maxlength="20" type="password" bindinput="bindPassWord" />
   </view>
 
 
