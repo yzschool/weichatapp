@@ -1,6 +1,7 @@
 // pages/barCode/bookBorrrow.js
 var id;
 var status;
+var itemStatus;
 var bookName;
 var bookNames = "";
 var borrowname ="";
@@ -192,16 +193,20 @@ Page({
         method: 'GET',
         success: function (res1) {
           if (res1.statusCode == 200) {
-
-            console.log('14567', res1);
+            itemStatus=1;
+            console.log('出现的block', itemStatus);
+            //console.log('14567*', res1);
             var jsonStr = JSON.stringify(res1.data);
             var jsonPar = JSON.parse(jsonStr);
-            console.log('145678', jsonPar);
-            that.setData({ item: jsonPar});
+            console.log('按照名字查询数据', jsonPar);
+            that.setData({ item: jsonPar, itemStatus: itemStatus});
           } else {
+            itemStatus=2;
+            that.setData({ itemStatus: itemStatus });
             wx.showToast({
               title: '找不到该书籍',
-              image: "../../image/fail.png"
+              image: "../../image/fail.png",
+              duration: 6000
             })
           }
         },
@@ -212,16 +217,19 @@ Page({
         method: 'GET',
         success: function (res1) {
           if (res1.statusCode == 200) {
-
-            console.log('14567', res1);
+            //console.log('查询所有的书籍', res1);
+            itemStatus = 1;
             var jsonStr = JSON.stringify(res1.data);
             var jsonPar = JSON.parse(jsonStr);
-            console.log('145678', jsonPar);
-            that.setData({ item: jsonPar });
+            console.log('查询所有的书籍', jsonPar);
+            that.setData({ item: jsonPar, itemStatus: itemStatus });
           } else {
+            itemStatus = 2;
+            that.setData({ itemStatus: itemStatus });
             wx.showToast({
               title: '找不到该书籍',
-              image: "../../image/fail.png"
+              image: "../../image/fail.png",
+              duration: 6000
             })
           }
         },
@@ -246,6 +254,8 @@ Page({
           method: 'GET',
           success: function (res1) {
             if (res1.statusCode == 200) {
+              itemStatus = 0;
+              console.log('出现的block2', itemStatus);
               console.log('查找书籍扫描出来的编码', res1.data);
               var jsonStr = JSON.stringify(res1.data);
               console.log('jsonStr 2', jsonStr);
@@ -253,13 +263,16 @@ Page({
               console.log('jsonPar 2', jsonPar);
               that.setData({
                 item: jsonPar,
-                SNClicked: SNClicked
-                
+                SNClicked: SNClicked,
+                itemStatus:itemStatus
               });
             } else {
+              itemStatus = 2;
+              that.setData({ itemStatus: itemStatus });
               wx.showToast({
                 title: '找不到该书籍',
-                image: "../../image/fail.png"
+                image: "../../image/fail.png",
+                duration: 6000
               })
             }
           },
@@ -332,6 +345,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log("111", itemStatus)
     var that = this;
     id = options.id;
     status = options.status;
