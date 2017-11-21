@@ -39,6 +39,10 @@ Page({
           duration: 4000
         })
       }
+     /* location = "办公室2",
+      wx.navigateTo({
+        url: '../index/barCode?location=' + location
+      })*/
     } else if (userName) {
       wx.showToast({
         title: '密码不能为空',

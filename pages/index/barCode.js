@@ -1,5 +1,5 @@
 // barCode.js
-
+var locations;
 var id;
 var status;
 Page({
@@ -14,6 +14,7 @@ Page({
   bindBorrow: function () {
     var that = this;
     status = 1;
+    console.log("444", locations)
     wx.scanCode({
       success: (res) => {
         console.log('lalla barCode页面传过来的',res.result);
@@ -24,8 +25,9 @@ Page({
         });
         id = res.result;
         console.log('barCode页面传过来的', status);
+        console.log("4446", locations);
         wx.navigateTo({
-          url: '../barCode/bookBorrow?id=' + id + "&status=" + status
+          url: '../barCode/bookBorrow?id=' + id + "&status=" + status + "&locations=" + locations
         })
       }
     });
@@ -45,7 +47,7 @@ Page({
         id = res.result;
         console.log('lallas', status);
         wx.navigateTo({
-          url: '../barCode/bookBorrow?id=' + id + "&status=" + status
+          url: '../barCode/bookBorrow?id=' + id + "&status=" + status + "&locations=" + locations
         })
       }
     });
@@ -66,7 +68,7 @@ Page({
         id = res.result;
         console.log('lallas', status);
         wx.navigateTo({
-          url: '../barCode/bookBorrow?id=' + id + "&status=" + status
+          url: '../barCode/bookBorrow?id=' + id + "&status=" + status + "&locations=" + locations
         })
       }
     });
@@ -77,7 +79,7 @@ Page({
     var that = this;
     status = 4;
     wx.navigateTo({
-      url: '../barCode/bookBorrow?status=' + status 
+      url: '../barCode/bookBorrow?status=' + status + "&locations=" + locations
     })
   },
   
@@ -86,8 +88,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var location=options.location;
-  console.log("444",location)
+    locations=options.location;
+    console.log("4445",locations)
   },
 
   /**
