@@ -21,7 +21,7 @@ Page({
     console.log("借书操作scan id is，borrowname is ", id,borrowname);
     if (id && borrowname) {
       wx.request({
-        url: 'http://www.yzschool.com.cn/weichat/book/id/',
+        url: 'https://www.yzschool.com.cn/weichat/book/id/',
         method: 'POST',
         data: {
           "id": id,
@@ -41,7 +41,7 @@ Page({
               //update
               console.log('update');
               wx.request({
-                url: 'http://www.yzschool.com.cn/weichat/book_update',
+                url: 'https://www.yzschool.com.cn/weichat/book_update',
                 method: 'POST',
                 data: {
                   "id": id,
@@ -80,7 +80,7 @@ Page({
             //数据库没这本书，就要跳到添加书目，borrowname有数据
             console.log('add book',id,borrowname,bookName,address);
             wx.request({
-              url: 'http://www.yzschool.com.cn/weichat/book',
+              url: 'https://www.yzschool.com.cn/weichat/book',
               method: 'POST',
               data: {
                 "id": id,
@@ -126,7 +126,7 @@ Page({
     if (borrownameR !=""){
       //update一下
       wx.request({
-        url: 'http://www.yzschool.com.cn/weichat/book_update',
+        url: 'https://www.yzschool.com.cn/weichat/book_update',
         method: 'POST',
         data: {
           "id": id,
@@ -167,7 +167,7 @@ Page({
     console.log('form发生了submit事件，添加书目', bookName);
     if (bookName) {
       wx.request({
-        url: 'http://www.yzschool.com.cn/weichat/book',
+        url: 'https://www.yzschool.com.cn/weichat/book',
         method: 'POST',
         data: {
           "id": id,
@@ -210,7 +210,7 @@ Page({
     console.log('按书名查询结果', bookNames);
     if (bookNames !== "") {
       wx.request({
-        url: 'http://www.yzschool.com.cn/weichat/book/name/',
+        url: 'https://www.yzschool.com.cn/weichat/book/name/',
         method: 'POST',
         data: {
           "bookname": bookNames,
@@ -243,7 +243,7 @@ Page({
       })
     } else {
       wx.request({
-        url: 'http://www.yzschool.com.cn/weichat/books',
+        url: 'https://www.yzschool.com.cn/weichat/books',
         method: 'POST',
         data: {
           "location": address,
@@ -286,7 +286,7 @@ Page({
         id = res.result;
         console.log('按编码查询ID', id);
         wx.request({
-          url: 'http://www.yzschool.com.cn/weichat/book/id/',
+          url: 'https://www.yzschool.com.cn/weichat/book/id/',
           method: 'POST',
           data: {
             "id": id,
@@ -349,7 +349,7 @@ Page({
         if (res.confirm) {
           console.log("已经发送删除请求");
           wx.request({
-            url: 'http://www.yzschool.com.cn/weichat/book_delete',
+            url: 'https://www.yzschool.com.cn/weichat/book_delete',
             method: 'POST',
             data: {
               "id": bookid
@@ -363,7 +363,7 @@ Page({
                 wx.showToast({
                   title: '删除成功',
                   icon: 'success',
-                  duration: 6000
+                  duration: 3000
                 });
                 itemStatus = 2;
                 that1.setData({ itemStatus: itemStatus });
@@ -407,7 +407,7 @@ Page({
     if (status == 1 || status == 2){
       console.log("555556", id,address);
       wx.request({
-        url: 'http://www.yzschool.com.cn/weichat/book/id/',
+        url: 'https://www.yzschool.com.cn/weichat/book/id/',
         method: 'POST',
         data: {
           "id": id,
