@@ -1,0 +1,26 @@
+<!--pages/barCode/borrow.wxml-->
+<form bindsubmit="formSubmit1" bindreset="formReset">
+    <view class="view1">
+      <view class="textAll">唯一编码:</view>
+      <view class="classname" style="display:inline; margin-left:20rpx;">{{id}}</view>
+    </view>
+    <view class="view1" hidden='{{hiddens}}'>
+      <text class="textAll">图书馆名：</text>
+      <!--  <input class="className" placeholder="请输入地址" bindinput="bindAdd" />-->
+      <view class="classname" style="display:inline; margin-left:20rpx;">{{address}}</view>
+    </view>
+    <view class="view1" hidden='{{hiddens}}'>
+      <view class="textAll">书名：</view>
+      <input name="createdBy" placeholder="请输入书名" class="className" maxlength="20" type="text" bindinput="bindBookname" />
+    </view>
+    <view class="view1">
+      <text class="textAll">借阅人：</text>
+      <input class="className" placeholder="请输入借阅人姓名" bindinput="bindBorrowname" />
+    </view>
+
+    <view class="okView">
+      <button formType="submit" type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" hover-class="other-button-hover" class="okBtn">确认借阅</button>
+    </view>
+
+    <view style="height:50rpx;"></view>
+  </form>

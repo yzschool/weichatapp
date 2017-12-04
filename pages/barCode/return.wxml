@@ -1,0 +1,16 @@
+<!--pages/barCode/return.wxml-->
+<form bindsubmit="formSubmit2" bindreset="formReset">
+  <view class="view1">
+    <view class="textAll">唯一编码:</view>
+    <view class="classname" style="display:inline; margin-left:20rpx;">{{id}}</view>
+  </view>
+  <view class="view1">
+    <text class="textAll">借阅人：</text>
+    <view class="classname" style="display:inline; margin-left:20rpx;">{{borrownameR}}</view>
+  </view>
+  <view class="okView">
+    <button formType="submit" type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" hover-class="other-button-hover" class="okBtn">确认还书</button>
+  </view>
+
+  <view style="height:50rpx;"></view>
+</form>

@@ -14,7 +14,11 @@
     "pages/class/info",
     "pages/index/barCode",
     "pages/barCode/login",
-    "pages/barCode/bookBorrow"
+    "pages/barCode/bookBorrow",
+    "pages/barCode/borrow",
+    "pages/barCode/return",
+    "pages/barCode/add",
+    "pages/barCode/search"
   ],
   "window": {
     "navigationBarTitleText": "南方微学"

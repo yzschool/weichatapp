@@ -8,26 +8,25 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
   },
 //借书
   bindBorrow: function () {
     var that = this;
-    status = 1;
-    console.log("444", locations)
+    //status = 1;
+    console.log("barCode页面", locations)
     wx.scanCode({
       success: (res) => {
-        console.log('lalla barCode页面传过来的',res.result);
+        //console.log('lalla barCode页面传过来的',res.result);
         var jsonStr = JSON.stringify(res);
         console.log('barCode页面', jsonStr);
         this.setData({
           id: res.result
         });
         id = res.result;
-        console.log('barCode页面传过来的', status);
+        //console.log('barCode页面传过来的', status);
         console.log("4446", locations);
         wx.navigateTo({
-          url: '../barCode/bookBorrow?id=' + id + "&status=" + status + "&locations=" + locations
+          url: '../barCode/borrow?id=' + id +  "&locations=" + locations
         })
       }
     });
@@ -35,7 +34,7 @@ Page({
   //还书
   bindBack: function () {
     var that = this;
-    status = 2;
+    //status = 2;
     wx.scanCode({
       success: (res) => {
         console.log('lalla', res.result);
@@ -45,9 +44,9 @@ Page({
           id: res.result
         });
         id = res.result;
-        console.log('lallas', status);
+        //console.log('lallas', status);
         wx.navigateTo({
-          url: '../barCode/bookBorrow?id=' + id + "&status=" + status + "&locations=" + locations
+          url: '../barCode/return?id=' + id +  "&locations=" + locations
         })
       }
     });
@@ -56,7 +55,7 @@ Page({
   //增加书目
   bindAdd: function () {
     var that = this;
-    status = 3;
+   // status = 3;
     wx.scanCode({
       success: (res) => {
         console.log('lalla', res.result);
@@ -66,9 +65,9 @@ Page({
           id: res.result
         });
         id = res.result;
-        console.log('lallas', status);
+        //console.log('lallas', status);
         wx.navigateTo({
-          url: '../barCode/bookBorrow?id=' + id + "&status=" + status + "&locations=" + locations
+          url: '../barCode/add?id=' + id  + "&locations=" + locations
         })
       }
     });
@@ -77,9 +76,9 @@ Page({
   //查找
   bindSearch: function () {
     var that = this;
-    status = 4;
+   // status = 4;
     wx.navigateTo({
-      url: '../barCode/bookBorrow?status=' + status + "&locations=" + locations
+      url: '../barCode/search?locations=' + locations
     })
   },
   

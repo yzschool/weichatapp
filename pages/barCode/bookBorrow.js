@@ -208,7 +208,7 @@ Page({
   formSubmit4: function (e) {
     var that = this;
     console.log('按书名查询结果', bookNames);
-    if (bookNames !== "") {
+    if (bookNames != "") {
       wx.request({
         url: 'https://www.yzschool.com.cn/weichat/book/name/',
         method: 'POST',

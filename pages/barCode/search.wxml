@@ -1,0 +1,43 @@
+<!--pages/barCode/search.wxml-->
+<view class="btnR">
+  <view class="list" bindtap="searchCode">编码查询</view>
+  <view class="submits">书名查询</view>
+</view>
+
+<block hidden="{{SNClicked}}">
+  <form bindsubmit="formSubmit4" bindreset="formReset">
+    <view class="searchView">
+      <view class="searchView1">
+        <image src="http://yzschool.com.cn/images/weiCode/search.png"></image>
+        <input bindinput="bindBooknames" class="searchInput" name="classLevel" placeholder="请输入书名进行搜索" auto-focus='true' />
+        <button formType="submit" class="searchBtn">搜索</button>
+      </view>
+    </view>
+  </form>
+</block>
+
+<block wx:if="{{itemStatus==1}}">
+  <view wx:for="{{item}}" wx:for-index='key' class='classItem'>
+    <view class="view1s">
+      <text class="textAll">唯一编码：</text>
+      <text class="className">{{item.id}}</text>
+    </view>
+    <view class="view1s">
+      <text class="textAll">书名：</text>
+      <text class="className">{{item.bookname}}</text>
+    </view>
+    <view class="view1s">
+      <text class="textAll">借阅人：</text>
+      <text class="className">{{item.borrowname}}</text>
+    </view>
+    <view class="view1s">
+      <text class="textAll">地址：</text>
+      <text class="className">{{item.location}}</text>
+    </view>
+    <view class="deletes" bindtap="clickedDelete" id="{{key}}">
+      <image src="http://yzschool.com.cn/images/weiCode/delete_box.png"></image>
+    </view>
+  </view>
+</block>
+<block wx:else>
+</block>
