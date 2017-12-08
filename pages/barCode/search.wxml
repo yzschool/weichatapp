@@ -4,7 +4,7 @@
   <view class="submits">书名查询</view>
 </view>
 
-<block hidden="{{SNClicked}}">
+<block>
   <form bindsubmit="formSubmit4" bindreset="formReset">
     <view class="searchView">
       <view class="searchView1">

@@ -1,32 +1,32 @@
 // barCode.js
-var locations;
-var id;
-var status;
+/*var locations;
+var id;*/
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    locations:'',
+    id:0
   },
 //借书
   bindBorrow: function () {
     var that = this;
     //status = 1;
-    console.log("barCode页面", locations)
+    console.log("barCode页面", that.data.locations)
     wx.scanCode({
       success: (res) => {
         //console.log('lalla barCode页面传过来的',res.result);
         var jsonStr = JSON.stringify(res);
         console.log('barCode页面', jsonStr);
-        this.setData({
+        that.data.id = res.result;
+        that.setData({
           id: res.result
         });
-        id = res.result;
         //console.log('barCode页面传过来的', status);
-        console.log("4446", locations);
         wx.navigateTo({
-          url: '../barCode/borrow?id=' + id +  "&locations=" + locations
+          url: '../barCode/borrow?id=' + that.data.id + "&locations=" + that.data.locations
         })
       }
     });
@@ -40,13 +40,13 @@ Page({
         console.log('lalla', res.result);
         var jsonStr = JSON.stringify(res);
         console.log('lallaeee', jsonStr);
-        this.setData({
+        that.data.id = res.result;
+        that.setData({
           id: res.result
         });
-        id = res.result;
         //console.log('lallas', status);
         wx.navigateTo({
-          url: '../barCode/return?id=' + id +  "&locations=" + locations
+          url: '../barCode/return?id=' + that.data.id + "&locations=" + that.data.locations
         })
       }
     });
@@ -61,13 +61,13 @@ Page({
         console.log('lalla', res.result);
         var jsonStr = JSON.stringify(res);
         console.log('lallaeee', jsonStr);
-        this.setData({
+        that.data.id = res.result;
+        that.setData({
           id: res.result
         });
-        id = res.result;
         //console.log('lallas', status);
         wx.navigateTo({
-          url: '../barCode/add?id=' + id  + "&locations=" + locations
+          url: '../barCode/add?id=' + that.data.id + "&locations=" + that.data.locations
         })
       }
     });
@@ -78,7 +78,7 @@ Page({
     var that = this;
    // status = 4;
     wx.navigateTo({
-      url: '../barCode/search?locations=' + locations
+      url: '../barCode/search?locations=' + that.data.locations
     })
   },
   
@@ -87,8 +87,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    locations=options.location;
-    console.log("4445",locations)
+    //locations=options.location;
+    this.setData({
+      locations: options.location
+    })
+    console.log("4445",this.data.locations)
   },
 
   /**

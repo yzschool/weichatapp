@@ -1,18 +1,20 @@
 // pages/barCode/add.js
-var id;
-var address;
-var bookName;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    id: 0,
+    address:'',
+    bookName:''
   },
 
   bindBookname: function (e) {
-    bookName = e.detail.value
+   // bookName = e.detail.value
+    this.setData({
+      bookName: e.detail.value
+    })
   },
 
   /**
@@ -20,9 +22,9 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    id = options.id;
-    address = options.locations;
-    console.log("借书页面", options.id, options.locations);
+    /*that.data.id = options.id;
+    that.data.address = options.locations;*/
+    //console.log("借书页面", options.id, options.locations);
     that.setData({
       id: options.id,
       address: options.locations
@@ -30,15 +32,15 @@ Page({
   },
 
   formSubmit3: function (e) {
-    console.log('form发生了submit事件，添加书目', bookName);
-    if (bookName) {
+   // console.log('form发生了submit事件，添加书目', this.data.bookName, this.data.address, this.data.id);
+    if (this.data.bookName) {
       wx.request({
         url: 'https://www.yzschool.com.cn/weichat/book',
         method: 'POST',
         data: {
-          "id": id,
-          "bookname": bookName,
-          "location": address,
+          "id": this.data.id,
+          "bookname": this.data.bookName,
+          "location": this.data.address,
         },
         header: {
           'content-type': 'application/json'
@@ -50,7 +52,6 @@ Page({
               icon: 'success',
               duration: 4000
             })
-            console.log("7777777")
             //wx.navigateBack();
           } else {
             wx.showToast({

@@ -1,13 +1,13 @@
 // pages/barCode/return.js
-var borrownameR = "";
-var address;
-var id;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    borrownameR:'',
+    address:'',
+    id:0
   },
 
   /**
@@ -15,41 +15,36 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    id = options.id;
-    address = options.locations;
-    console.log("还书页面", options.id, options.locations)
+   // console.log("还书页面", options.id, options.locations)
     that.setData({
       id: options.id,
-     // status: options.status,
       address: options.locations
     });
     //检查一下ID是否存在数据库里面
-    console.log("555556", id, address);
+    //console.log("99999996", that.data.id, that.data.address);
     wx.request({
-      url: 'https://www.yzschool.com.cn/weichat/book/id/',
+      url: 'https://www.yzschool.com.cn/weichat/book/id',
       method: 'POST',
       data: {
-        "id": id,
-        "location": address,
+        "id": that.data.id,
+        "location": that.data.address,
       },
       header: {
         'content-type': 'application/json'
       },
       success: function (re) {
-        console.log("55555", re.statusCode);
+        //console.log("55555", re.statusCode);
         if (re.statusCode == 200) {
-          console.log('存在该书籍', re);
+         // console.log('存在该书籍', re);
           var jsonStr = JSON.stringify(re.data);
           var jsonPar = JSON.parse(jsonStr);
-          console.log('145678', jsonPar);
-            borrownameR = jsonPar[0].borrowname;
-            // console.log("5557", borrownameT);
+          that.data.borrownameR = jsonPar[0].borrowname;
             that.setData({
-              borrownameR: borrownameR
+              borrownameR: that.data.borrownameR
             });
-            console.log("dhg", borrownameR)
+          //console.log("dhg", that.data.borrownameR)
         } else {
-          console.log('不存在该书籍');
+          //console.log('不存在该书籍');
           wx.showToast({
             title: '该书籍不存在',
             image: "../../image/fail.png",
@@ -62,15 +57,15 @@ Page({
 
   //还书
   formSubmit2: function (e) {
-    console.log("还书操作scan id is ", id);
-    console.log("还书操作scan id is ", borrownameR);
-    if (borrownameR != "") {
+    var that=this;
+    //console.log("还书操作scan id is ", that.data.id, that.data.borrownameR);
+    if (that.data.borrownameR != "") {
       //update一下
       wx.request({
         url: 'https://www.yzschool.com.cn/weichat/book_update',
         method: 'POST',
         data: {
-          "id": id,
+          "id": that.data.id,
           "borrowname": ""
         },
         header: {

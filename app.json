@@ -14,7 +14,6 @@
     "pages/class/info",
     "pages/index/barCode",
     "pages/barCode/login",
-    "pages/barCode/bookBorrow",
     "pages/barCode/borrow",
     "pages/barCode/return",
     "pages/barCode/add",

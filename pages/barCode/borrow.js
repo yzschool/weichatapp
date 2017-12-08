@@ -1,17 +1,17 @@
 // pages/barCode/borrow.js
-var id;
-var address;
-var bookName;
-var borrowname;
-var jsonBorrowName="";
-var consoleStatus=0;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    hiddens: true
+    hiddens: true,
+    id:0,
+    address:'',
+    bookName:'',
+    borrowname:'',
+    jsonBorrowName:'',
+    consoleStatus:0
   },
 
   /**
@@ -68,20 +68,20 @@ Page({
   },
   //借书
   formSubmit1: function (e) {
-    console.log("借书操作scan id is，borrowname is ", id, borrowname);
-    if (id && borrowname) {
-      if (consoleStatus==1){
+   // console.log("借书操作scan id is，borrowname is ", this.data.id, this.data.borrowname);
+    if (this.data.id && this.data.borrowname) {
+      if (this.data.consoleStatus==1){
         //数据库存在该书籍
-        console.log("update jsonBorrowName", jsonBorrowName);
-        if (jsonBorrowName == "") {
+        //console.log("update jsonBorrowName", this.data.jsonBorrowName);
+        if (this.data.jsonBorrowName == "") {
           //update
           console.log('update');
           wx.request({
             url: 'https://www.yzschool.com.cn/weichat/book_update',
             method: 'POST',
             data: {
-              "id": id,
-              "borrowname": borrowname,
+              "id": this.data.id,
+              "borrowname": this.data.borrowname,
             },
             header: {
               'content-type': 'application/json'
@@ -112,16 +112,16 @@ Page({
         }
       }else{
         //不存在该书籍
-        console.log("不存在该书籍时的consoleStatus ",consoleStatus);
-        console.log('add book', id, borrowname, bookName, address);
+       // console.log("不存在该书籍时的consoleStatus ", this.data.consoleStatus);
+       // console.log('add book', this.data.id, this.data.borrowname, this.data.bookName, this.data.address);
         wx.request({
           url: 'https://www.yzschool.com.cn/weichat/book',
           method: 'POST',
           data: {
-            "id": id,
-            "borrowname": borrowname,
-            "bookname": bookName,
-            "location": address,
+            "id": this.data.id,
+            "borrowname": this.data.borrowname,
+            "bookname": this.data.bookName,
+            "location": this.data.address,
           },
           header: {
             'content-type': 'application/json'
@@ -156,29 +156,36 @@ Page({
     // console.log('form发生了reset事件')
   },
   bindBookname: function (e) {
-    bookName = e.detail.value
+    //bookName = e.detail.value
+    this.setData({
+      bookName: e.detail.value
+    })
   },
   bindBorrowname: function (e) {
-    borrowname = e.detail.value;
-    console.log("12345", borrowname)
+    //borrowname = e.detail.value;
+    var that=this;
+    that.setData({
+      borrowname: e.detail.value
+    })
+    //console.log("12345", borrowname)
   },
   onLoad: function (options) {
     var that = this;
-    id = options.id;
-    address = options.locations;
-    console.log("借书页面", options.id, options.locations);
+   /* id = options.id;
+    address = options.locations;*/
+   // console.log("借书页面", options.id, options.locations);
     that.setData({
       id: options.id,
       address: options.locations
     });
     //检查一下ID是否存在数据库里面
-      console.log("555556", id, address);
+   // console.log("555556", that.data.id, that.data.address);
       wx.request({
-        url: 'https://www.yzschool.com.cn/weichat/book/id/',
+        url: 'https://www.yzschool.com.cn/weichat/book/id',
         method: 'POST',
         data: {
-          "id": id,
-          "location": address,
+          "id": that.data.id,
+          "location": that.data.address,
         },
         header: {
           'content-type': 'application/json'
@@ -186,16 +193,16 @@ Page({
         success: function (re) {
           console.log("55555", re.statusCode);
           if (re.statusCode == 200) {
-            console.log('存在该书籍', re);
+            //console.log('存在该书籍', re);
             var jsonStr = JSON.stringify(re.data);
             var jsonPar = JSON.parse(jsonStr);
-            console.log('145678', jsonPar);
-            consoleStatus=1;
-            jsonBorrowName = jsonPar[0].borrowname;
-            console.log('consoleStatus 存在该书籍', consoleStatus, jsonBorrowName);
+            //console.log('145678', jsonPar);
+            that.data.consoleStatus=1;
+            that.data.jsonBorrowName = jsonPar[0].borrowname;
+            //console.log('consoleStatus1 存在该书籍', that.data.consoleStatus, that.data.jsonBorrowName);
           } else {
-            consoleStatus=2;
-            console.log('consoleStatus 不存在该书籍', consoleStatus);
+            that.data.consoleStatus=2;
+            //console.log('consoleStatus2 不存在该书籍', that.data.consoleStatus);
             //console.log('不存在该书籍');
               that.setData({
                 hiddens: false
