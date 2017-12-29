@@ -11,7 +11,8 @@ Page({
     bookName:'',
     borrowname:'',
     jsonBorrowName:'',
-    consoleStatus:0
+    consoleStatus:0,
+    is_first_action:false
   },
 
   /**
@@ -72,16 +73,28 @@ Page({
     if (this.data.id && this.data.borrowname) {
       if (this.data.consoleStatus==1){
         //数据库存在该书籍
-        //console.log("update jsonBorrowName", this.data.jsonBorrowName);
-        if (this.data.jsonBorrowName == "") {
+        console.log("update jsonBorrowName", this.data.jsonBorrowName);
+        if (this.data.jsonBorrowName == undefined) {
           //update
           console.log('update');
+          console.log("is_first_action value is", this.data.is_first_action)
+         /* if (is_first_action == false) {
+
+
+          } else {
+
+          }*/
           wx.request({
             url: 'https://www.yzschool.com.cn/weichat/book_update',
             method: 'POST',
             data: {
               "id": this.data.id,
               "borrowname": this.data.borrowname,
+              "isbn":"",
+              "bookname":"",
+              "location": "",
+              "updatetime":""
+
             },
             header: {
               'content-type': 'application/json'
@@ -93,6 +106,9 @@ Page({
                   icon: 'success',
                   duration: 3000
                 });
+                setTimeout(function () {
+                  wx.navigateBack();
+                }, 1000)
                 //wx.navigateBack();
               } else {
                 wx.showToast({
@@ -103,6 +119,7 @@ Page({
               }
             },
           })
+
         } else {
           wx.showToast({
             title: '书籍已被借阅',
@@ -118,10 +135,16 @@ Page({
           url: 'https://www.yzschool.com.cn/weichat/book',
           method: 'POST',
           data: {
-            "id": this.data.id,
+           /* "id": this.data.id,
             "borrowname": this.data.borrowname,
             "bookname": this.data.bookName,
+            "location": this.data.address,*/
+            "id": this.data.id,
+            "borrowname": this.data.borrowname,
+            "isbn": "",
+            "bookname": this.data.bookName,
             "location": this.data.address,
+            "updatetime": ""
           },
           header: {
             'content-type': 'application/json'
@@ -132,7 +155,10 @@ Page({
                 title: '借阅成功',
                 icon: 'success',
                 duration: 3000
-              })
+              });
+              setTimeout(function () {
+                wx.navigateBack();
+              }, 1000)
               //wx.navigateBack();
             } else {
               wx.showToast({
@@ -184,8 +210,15 @@ Page({
         url: 'https://www.yzschool.com.cn/weichat/book/id',
         method: 'POST',
         data: {
+         /* "id": that.data.id,
+          "location": that.data.address,*/
+
           "id": that.data.id,
+          "borrowname": "",
+          "isbn": "",
+          "bookname": "",
           "location": that.data.address,
+          "updatetime": ""
         },
         header: {
           'content-type': 'application/json'
@@ -196,10 +229,10 @@ Page({
             //console.log('存在该书籍', re);
             var jsonStr = JSON.stringify(re.data);
             var jsonPar = JSON.parse(jsonStr);
-            //console.log('145678', jsonPar);
+            console.log('145678', jsonPar);
             that.data.consoleStatus=1;
             that.data.jsonBorrowName = jsonPar[0].borrowname;
-            //console.log('consoleStatus1 存在该书籍', that.data.consoleStatus, that.data.jsonBorrowName);
+            console.log('consoleStatus1 存在该书籍', that.data.consoleStatus, that.data.jsonBorrowName);
           } else {
             that.data.consoleStatus=2;
             //console.log('consoleStatus2 不存在该书籍', that.data.consoleStatus);

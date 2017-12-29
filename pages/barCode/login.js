@@ -32,7 +32,7 @@ Page({
           url: '../index/barCode?location=' + location
         })
       }else{
-        console.log("fail ");
+        console.log("fail ",num);
         wx.showToast({
           title: '账号或密码错误',
           image: "../../image/fail.png",

@@ -38,9 +38,15 @@ Page({
         url: 'https://www.yzschool.com.cn/weichat/book',
         method: 'POST',
         data: {
+          /*"id": this.data.id,
+          "bookname": this.data.bookName,
+          "location": this.data.address,*/
           "id": this.data.id,
+          "borrowname": "",
+          "isbn": "",
           "bookname": this.data.bookName,
           "location": this.data.address,
+          "updatetime": ""
         },
         header: {
           'content-type': 'application/json'
@@ -51,7 +57,10 @@ Page({
               title: '添加成功',
               icon: 'success',
               duration: 4000
-            })
+            });
+            setTimeout(function () {
+              wx.navigateBack();
+            }, 1000)
             //wx.navigateBack();
           } else {
             wx.showToast({

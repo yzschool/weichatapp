@@ -6,10 +6,13 @@ Page({
    */
   data: {
     bookNames:"",
+    borrowname:"",
     item:[],
     addressS:'',
     itemStatus:0,
-    id:0
+    id:0,
+    clickedBtn:0,
+    message:"当前借阅"
   },
 
   /**
@@ -22,11 +25,33 @@ Page({
       addressS: options.locations
     });
   },
+  searchs:function(){
+    console.log("h123", this.data.clickedBtn)
+    if (this.data.clickedBtn==0){
+      this.setData({
+        message: "书籍查询",
+        clickedBtn: 1,
+        itemStatus:2
+      })
+    }else{
+      this.setData({
+        message: "当前借阅",
+        clickedBtn: 0,
+        itemStatus:2
+      })
+    }
+  },
 
   //获取输入的书名
   bindBooknames: function (e) {
     this.setData({
       bookNames: e.detail.value
+    })
+  },
+  //获取输入的借阅人
+  bindBorrowname: function (e) {
+    this.setData({
+      borrowname: e.detail.value
     })
   },
 
@@ -48,7 +73,13 @@ Page({
             url: 'https://www.yzschool.com.cn/weichat/book_delete',
             method: 'POST',
             data: {
-              "id": bookid
+             /* "id": bookid*/
+              "id": bookid,
+              "borrowname": "",
+              "isbn": "",
+              "bookname": "",
+              "location": "",
+              "updatetime": ""
             },
             header: {
               'content-type': 'application/json'
@@ -95,8 +126,14 @@ Page({
         url: 'https://www.yzschool.com.cn/weichat/book/name',
         method: 'POST',
         data: {
+        /*  "bookname": that.data.bookNames,
+          "location": that.data.addressS,*/
+          "id": "",
+          "borrowname": "",
+          "isbn": "",
           "bookname": that.data.bookNames,
           "location": that.data.addressS,
+          "updatetime": ""
         },
         header: {
           'content-type': 'application/json'
@@ -119,7 +156,7 @@ Page({
             wx.showToast({
               title: '找不到该书籍',
               image: "../../image/fail.png",
-              duration: 6000
+              duration: 4000
             })
           }
         },
@@ -130,7 +167,13 @@ Page({
         url: 'https://www.yzschool.com.cn/weichat/books',
         method: 'POST',
         data: {
+         /* "location": that.data.addressS,*/
+          "id": "",
+          "borrowname": "",
+          "isbn": "",
+          "bookname": "",
           "location": that.data.addressS,
+          "updatetime": ""
         },
         header: {
           'content-type': 'application/json'
@@ -154,11 +197,67 @@ Page({
             wx.showToast({
               title: '找不到该书籍',
               image: "../../image/fail.png",
-              duration: 6000
+              duration: 4000
             })
           }
         },
       })
+    }
+  },
+
+  //按照借阅人姓名查找
+  searchBname: function (e) {
+    var that = this;
+    // console.log('按书名查询结果555', that.data.bookNames);
+    if (that.data.borrowname != "") {
+      // console.log('按书名查询结果', that.data.bookNames);
+      wx.request({
+        url: 'https://www.yzschool.com.cn/weichat/book/name',
+        method: 'POST',
+        data: {
+          /*  "bookname": that.data.bookNames,
+            "location": that.data.addressS,*/
+          "id": "",
+          "borrowname": that.data.borrowname,
+          "isbn": "",
+          "bookname": "",
+          "location": that.data.addressS,
+          "updatetime": ""
+        },
+        header: {
+          'content-type': 'application/json'
+        },
+        success: function (res1) {
+          if (res1.statusCode == 200) {
+            //console.log('按照名字查询数据1', res1.statusCode);
+            that.data.itemStatus = 1;
+            //console.log('出现的block', that.data.itemStatus);
+            //console.log('14567*', res1);
+            var jsonStr = JSON.stringify(res1.data);
+            var jsonPar = JSON.parse(jsonStr);
+            //console.log('按照名字查询数据', jsonPar);
+            that.setData({ item: jsonPar, itemStatus: that.data.itemStatus });
+          } else {
+            //console.log('按照名字查询数据1', res1.statusCode);
+            that.setData.itemStatus = 2;
+            // console.log("222222", that.setData.itemStatus);
+            that.setData({ itemStatus: that.setData.itemStatus });
+            wx.showToast({
+              title: '找不到该借阅人',
+              image: "../../image/fail.png",
+              duration: 4000
+            })
+          }
+        },
+      })
+    } else {
+      that.setData({ itemStatus: 2 });
+      wx.showToast({
+        title: '请完整输入借阅人姓名',
+        image: "../../image/fail.png",
+        duration: 4000
+      })
+     
     }
   },
 
@@ -172,13 +271,19 @@ Page({
         var jsonStr = JSON.stringify(res);
         //console.log('按编码查询1', jsonStr);
         that.data.id = res.result;
-     //   console.log('按编码查询ID', that.data.id);
+        console.log('按编码查询ID', that.data.id);
         wx.request({
           url: 'https://www.yzschool.com.cn/weichat/book/id',
           method: 'POST',
           data: {
+            /*"id": that.data.id,
+            "location": that.data.addressS,*/
             "id": that.data.id,
+            "borrowname": "",
+            "isbn": "",
+            "bookname": "",
             "location": that.data.addressS,
+            "updatetime": ""
           },
           header: {
             'content-type': 'application/json'
@@ -199,11 +304,11 @@ Page({
             } else {
               that.setData.itemStatus = 2;
               that.setData({ itemStatus: that.setData.itemStatus });
-             // console.log("res.statusCode", res1.statusCode);
+              console.log("res.statusCode", res1.statusCode);
               wx.showToast({
                 title: '找不到该书籍',
                 image: "../../image/fail.png",
-                duration: 6000
+                duration: 4000
               })
             }
           },

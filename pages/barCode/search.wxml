@@ -1,15 +1,27 @@
 <!--pages/barCode/search.wxml-->
 <view class="btnR">
   <view class="list" bindtap="searchCode">编码查询</view>
-  <view class="submits">书名查询</view>
+  <view class="submits" bindtap='searchs'>{{message}}</view>
 </view>
 
-<block>
+<block wx:if="{{clickedBtn==0}}">
   <form bindsubmit="formSubmit4" bindreset="formReset">
     <view class="searchView">
       <view class="searchView1">
         <image src="http://yzschool.com.cn/images/weiCode/search.png"></image>
         <input bindinput="bindBooknames" class="searchInput" name="classLevel" placeholder="请输入书名进行搜索" auto-focus='true' />
+        <button formType="submit" class="searchBtn">搜索</button>
+      </view>
+    </view>
+  </form>
+</block>
+
+<block wx:else>
+  <form bindsubmit="searchBname" bindreset="formReset">
+    <view class="searchView">
+      <view class="searchView1">
+        <image src="http://yzschool.com.cn/images/weiCode/search.png"></image>
+        <input bindinput="bindBorrowname" class="searchInput" name="classLevel" placeholder="请输入借阅人姓名查询" auto-focus='true' />
         <button formType="submit" class="searchBtn">搜索</button>
       </view>
     </view>

@@ -26,8 +26,14 @@ Page({
       url: 'https://www.yzschool.com.cn/weichat/book/id',
       method: 'POST',
       data: {
+        /*"id": that.data.id,
+        "location": that.data.address,*/
         "id": that.data.id,
+        "borrowname": "",
+        "isbn": "",
+        "bookname": "",
         "location": that.data.address,
+        "updatetime": ""
       },
       header: {
         'content-type': 'application/json'
@@ -65,8 +71,14 @@ Page({
         url: 'https://www.yzschool.com.cn/weichat/book_update',
         method: 'POST',
         data: {
+          /*"id": that.data.id,
+          "borrowname": "",*/
           "id": that.data.id,
-          "borrowname": ""
+          "borrowname": "",
+          "isbn": "",
+          "bookname": "",
+          "location": "",
+          "updatetime": ""
         },
         header: {
           'content-type': 'application/json'
@@ -78,6 +90,9 @@ Page({
               icon: 'success',
               duration: 6000
             });
+            setTimeout(function () {
+              wx.navigateBack();
+            }, 1000)
             //wx.navigateBack();
           } else {
             console
